@@ -4,6 +4,10 @@ import Navbar from "../Components/Navbar";
 import Header from "../Components/Header"; 
 
 export default function Home() {
+    localStorage.setItem("workoutHistory", JSON.stringify({"20/04/2026": "completed",
+  "21/04/2026": "rest",
+  "22/04/2026": "completed",
+  "23/04/2026": "pending"}));
     return (
         <>
             <div className="flex w-full flex-col h-screen md:grid md:grid-cols-12 md:overflow-hidden">
