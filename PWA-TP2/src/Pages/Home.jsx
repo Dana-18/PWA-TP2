@@ -1,7 +1,7 @@
-import Footer from "../Components/Footer";
+import Footer from "../Components/Footer/Footer";
 import MainContent from "../Components/MainContent";
 import Navbar from "../Components/Navbar";
-import Header from "../Components/Header"; 
+import Header from "../Components/Header/Header"; 
 
 export default function Home() {
     localStorage.setItem("workoutHistory", JSON.stringify({"20/04/2026": "completed",
