@@ -2,6 +2,7 @@ import Footer from "../Components/Footer/Footer";
 import MainContent from "../Components/MainContent";
 import Navbar from "../Components/Sidebar/Navbar";
 import Header from "../Components/Header/Header";
+import EjerciciosList from "../Components/Ejercicios/EjerciciosList";
 
 export default function Home() {
     localStorage.setItem(
@@ -19,6 +20,7 @@ export default function Home() {
              <Navbar />
             <div className="flex min-h-screen flex-col overflow-y-auto">
                 <Header />
+                <EjerciciosList />
                 <MainContent className="flex-1" />
                 <Footer className="mt-auto" />
             </div>
