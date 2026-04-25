@@ -1,6 +1,6 @@
 import { getCurrentWeekDates } from "../utils/getDateUtils";
 import { useState } from "react";
-import { Check, CircleDot } from "lucide-react";
+import { Check, CircleDot, Bed} from "lucide-react";
 
 export default function RoutineTracker({ className }) {
     //setHistory lo usamos luego para actualizar el estado del historial de entrenamiento
@@ -37,6 +37,10 @@ export default function RoutineTracker({ className }) {
 
                                     {status === 'pending' && (
                                         <CircleDot className="w-6 h-6 text-emerald-400" />
+                                    )}
+                                    
+                                    {status === 'rest' && (
+                                        <Bed className="w-6 h-6 text-emerald-400" />
                                     )}
 
                                     {!status && (

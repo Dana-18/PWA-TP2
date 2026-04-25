@@ -5,7 +5,10 @@ export default function Title({titulo, descripcion, size="large", className, chi
     if (size === "medium") {
         titleClasses += " text-2xl";
         descriptionClasses += " text-base";
-    } else {
+    }  else if (size === "small"){
+        titleClasses += " text-xl";
+        descriptionClasses += " text-sm";
+    }else {
         titleClasses += " text-6xl";
         descriptionClasses += " text-xl";
     }
