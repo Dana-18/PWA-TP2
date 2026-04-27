@@ -1,0 +1,75 @@
+{
+    "home": {
+        "title": "Mis Rutinas",
+        "description": "Tu espacio organico de crecimiento",
+        "button": "Activa",
+        "weeklyDashboard": {
+            "title": "Fuerza & restauracion",
+            "description": "Programa enfocado en movilidad y fuerza base",
+            "subtitle": "Esta Semana",
+            "weeksDay": {
+                "1": "Lun",
+                "2": "Mar",
+                "3": "Mie",
+                "4": "Jue",
+                "5": "Vie",
+                "6": "Sab",
+                "7": "Dom"
+
+            },
+            "button": "Continue Sesion"
+        },
+        "archives & alternatives": {
+            "title": "archivos & alternativas"
+        }
+    },
+
+    "sidebar": {
+        "dashboard": "Panel",
+        "routines": "Rutinas", 
+        "progress": "Progreso",
+        "settings": "Configuración",
+        "newRoutine": "Crear nueva rutina"
+    },
+
+    "footer": {
+        "name": "Grupo 8"
+    },
+
+    "catalog": {
+        "title": "explorar por grupo muscular",
+        "description": "encuentra los movimientos perfectos para tu sesión de entrenamiento",
+        "filter": {
+           "all": "todos",
+           "chest": "pecho",
+           "back": "espalda",
+           "shoulders": "hombros",
+           "legs": "piernas",
+           "arms": "brazos"
+
+        },
+        "button": "detalles"
+    },
+
+    "exercise log": {
+        "selectDay": "Seleccionar Día",
+        "sets": "Series de trabajo",
+        "button": "Guardar progreso"
+    },
+
+    "favorites": {
+        "title": "Mis favoritos",
+        "description": "tu colección personal de movimientos para tu crecimiento y restauración. Un espacio sereno diseñado para cultivar fuerza y movilidad, a tu propio ritmo",
+        "button": "agregar a la rutina",
+        "tag": {
+            "mobility": "movilidad",
+            "strength": "fuerza",
+            "beginner": "principiante"
+        }
+    },
+
+    "customRoutine": {
+        "button1": "editar estructura de rutina",
+        "button2": "iniciar sesión"
+    }
+}

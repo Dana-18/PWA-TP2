@@ -1,0 +1,75 @@
+{
+    "home": {
+        "title": "My Routines",
+        "description": "Your organic growth space",
+        "button": "Active",
+        "weeklyDashboard": {
+            "title": "Strong & restoration",
+            "description": "Program focus in movility and base strength",
+            "subtitle": "This week",
+            "weeksDay": {
+                "1": "Mo",
+                "2": "Tu",
+                "3": "We",
+                "4": "Th",
+                "5": "Fr",
+                "6": "Sa",
+                "7": "su"
+
+            },
+            "button": "Continue Sesion"
+        },
+        "archives & alternatives": {
+            "title": "Archives & Alternatives"
+        }
+    },
+
+    "sidebar": {
+        "dashboard": "Dashboard",
+        "routines": "Routines", 
+        "progress": "Progress",
+        "settings": "Settings",
+        "newRoutine": "Create new routine"
+    },
+
+    "footer": {
+        "name": "Group 8"
+    },
+
+    "catalog": {
+        "title": "explore by muscle group",
+        "description": "find the perfect moves for your workout sesion",
+        "filter": {
+           "all": "all",
+           "chest": "chest",
+           "back": "back",
+           "shoulders": "shoulders",
+           "legs": "legs",
+           "arms": "arms"
+
+        },
+        "button": "details"
+    },
+
+    "exercise log": {
+        "selectDay": "Select Day",
+        "sets": "Working sets",
+        "button": "Save progress"
+    },
+
+    "favorites": {
+        "title": "My favorites",
+        "description": "your personal collection of movements for your growth and restauration. A serene space designed to cultivate strength and mobility, at your own pace",
+        "button": "add to routine",
+        "tag": {
+            "mobility": "movbility",
+            "strength": "strength",
+            "beginner": "advanced"
+        }
+    },
+
+    "customRoutine": {
+        "button1": "edit routine structure",
+        "button2": "start session"
+    }
+}

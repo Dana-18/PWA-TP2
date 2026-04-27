@@ -1,22 +1,25 @@
 import React from "react";
 import { LayoutGrid, Route, TrendingUp, Settings } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
-export const menuItems = [
-    //cambiar aca el name para lo del idioma
-        {id: 1, name: 'Dashboard', icon: LayoutGrid},
-        {id: 2, name: 'Routines', icon: Route},
-        {id: 3, name: 'Progress', icon: TrendingUp},
-        {id: 4, name: 'Settings', icon: Settings},
-    ];
 
-    export default function NavItems() {
-        return (
+export default function NavItems() {
+  const { t } = useTranslation();
+
+  const menuItems = [
+    { id: 1, name: t('sidebar.dashboard'), icon: LayoutGrid },
+    { id: 2, name: t('sidebar.routines'), icon: Route },
+    { id: 3, name: t('sidebar.progress'), icon: TrendingUp },
+    { id: 4, name: t('sidebar.settings'), icon: Settings },
+  ];
+
+  return (
             <nav className="p-4">
                 <ul className="space-y-2">
                     {menuItems.map((item) => {
                         const Icon = item.icon;
                         return (
-                            <li key={item.name}>
+                            <li key={item.id}>
                                 <a
                                   href="#"
                                   className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
