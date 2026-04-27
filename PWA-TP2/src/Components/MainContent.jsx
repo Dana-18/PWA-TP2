@@ -7,7 +7,7 @@ import EmptyStateCard from "./EmptyStateCard";
 export default function MainContent ({className}) {
     const [rutina, setRutina] = useState(() => {
         const rutinaGuardada = localStorage.getItem("rutinaActiva");
-        return rutinaGuardada ? JSON.parse(rutinaGuardada) : {};
+        return rutinaGuardada ? JSON.parse(rutinaGuardada) : null;
     });
 
     if(!rutina) {
