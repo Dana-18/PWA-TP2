@@ -12,7 +12,7 @@ export default function MainContent ({className}) {
 
     if(!rutina) {
         return ( 
-            <main className={`bg-[#e0dbc5] gap-4 flex flex-col items-center justify-center p-4 md:px-24 ${className}`}>
+            <main className={`bg-[#e0dbc5] gap-4 flex flex-col items-center justify-center p-4 md:px-24${className}`}>
                 <EmptyStateCard />
             </main>
         );

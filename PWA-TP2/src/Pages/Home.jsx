@@ -5,6 +5,8 @@ import Header from "../Components/Header/Header";
 import EjerciciosList from "../Components/Ejercicios/EjerciciosList";
 
 export default function Home() {
+
+
     localStorage.setItem(
         "workoutHistory",
         JSON.stringify({
@@ -18,11 +20,13 @@ export default function Home() {
     return (
         <div className="min-h-screen bg-slate-100 text-slate-900 md:grid md:grid-cols-[280px_minmax(0,1fr)]">
              <Navbar />
-            <div className="flex min-h-screen flex-col overflow-y-auto">
+            <div className="flex flex-col min-h-screen">
                 <Header />
-                <EjerciciosList />
-                <MainContent className="flex-1" />
-                <Footer className="mt-auto" />
+                <div className="flex-1 overflow-y-auto bg-[#e0dbc5]">
+                    <EjerciciosList />
+                    <MainContent />
+                </div>
+                <Footer />
             </div>
            
         </div>
