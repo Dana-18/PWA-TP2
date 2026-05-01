@@ -1,11 +1,25 @@
 import { StrictMode } from 'react'
+import { useEffect, useState } from "react";
 import { createRoot } from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { Routes } from '../src/const/routes.js'
 import './index.css'
 import App from './App.jsx'
+import Home from './Pages/Home.jsx'
+import Catalog from './Pages/Catalog/Catalog.jsx'
 import "./i18n.js";
+
+
+const router = createBrowserRouter([
+  {
+    path: Routes.home,
+    element: <Home />,
+  },
+  { path: Routes.catalog, element: <Catalog /> }
+]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
 )
