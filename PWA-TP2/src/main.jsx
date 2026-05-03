@@ -7,6 +7,7 @@ import './index.css'
 import App from './App.jsx'
 import Home from './Pages/Home.jsx'
 import Catalog from './Pages/Catalog/Catalog.jsx'
+import Details from './Pages/Details/Details.jsx';
 import "./i18n.js";
 
 
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
     path: Routes.home,
     element: <Home />,
   },
-  { path: Routes.catalog, element: <Catalog /> }
+  { path: Routes.catalog, element: <Catalog /> },
+  { path: Routes.details, element: <Details /> },
 ]);
 
 createRoot(document.getElementById('root')).render(

@@ -1,7 +1,11 @@
 import React from 'react';
+import { useParams, useSearchParams } from "react-router";
+import { useNavigate } from "react-router";
+import { Routes } from '../../const/routes';
 
 const CardItem = ({ item }) => {
 
+    const navigate = useNavigate();
     const { name, description, image, difficulty, muscular_group} = item;
 
     const getDifficultyColor = (level) => {
@@ -39,7 +43,11 @@ const CardItem = ({ item }) => {
                     {description}
                 </p>
 
-                <button className="cursor-pointer inline-flex items-center px-3 py-2 teext-sm font-medium text-center text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-teal-300">
+                <button 
+                onClick={() => {
+                                        navigate(Routes.details, { state: { exercise: item } });
+                                    }}
+                className="cursor-pointer inline-flex items-center px-3 py-2 teext-sm font-medium text-center text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-teal-300">
                     View details
                     <svg className="rtl:rotate-170 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http:/w3.org/200/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
