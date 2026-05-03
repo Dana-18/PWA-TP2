@@ -27,7 +27,7 @@
     "sidebar": {
         "dashboard": "Panel",
         "routines": "Rutinas", 
-        "progress": "Progreso",
+        "favorites": "Favoritos",
         "settings": "Configuración",
         "newRoutine": "Crear nueva rutina"
     },
@@ -65,7 +65,8 @@
             "mobility": "movilidad",
             "strength": "fuerza",
             "beginner": "principiante"
-        }
+        },
+        "items": "Aún no hay favoritos, explora el catálogo y agrega tus ejercicios favoritos aquí!"
     },
 
     "customRoutine": {

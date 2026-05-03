@@ -5,7 +5,7 @@ import { useTranslation} from "react-i18next";
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
-const { t } = useTranslation();
+    const { t } = useTranslation();
     return (
         <>
             <aside className={`fixed inset-y-0 left-0 z-40 w-72 bg-white border-r border-gray-200 shadow-xl transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-100`}>
