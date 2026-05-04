@@ -1,5 +1,5 @@
 import React from "react";
-import { LayoutGrid, Route, Heart, Settings } from "lucide-react";
+import { Home, Route, Heart, Newspaper } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router";
 import { Routes } from "../../const/routes";
@@ -10,10 +10,10 @@ export default function NavItems() {
   const navigate = useNavigate();
 
   const menuItems = [
-    { id: 1, name: t('sidebar.dashboard'), icon: LayoutGrid, route: Routes.home },
+    { id: 1, name: t('sidebar.dashboard'), icon: Home, route: Routes.home },
     { id: 2, name: t('sidebar.routines'), icon: Route, route: Routes.catalog },
     { id: 3, name: t('sidebar.favorites'), icon: Heart, route: Routes.favorites },
-    { id: 4, name: t('sidebar.settings'), icon: Settings, route: null },
+    { id: 4, name: t('sidebar.catalog'), icon: Newspaper, route: Routes.catalog },
   ];
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, X, Plus } from "lucide-react";
+import { X, Plus } from "lucide-react";
 import NavItems from './NavItems';
 import { useTranslation} from "react-i18next";
 
@@ -8,14 +8,13 @@ export default function NavBar() {
     const { t } = useTranslation();
     return (
         <>
-            <aside className={`fixed inset-y-0 left-0 z-40 w-72 bg-white border-r border-gray-200 shadow-xl transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-100`}>
+            <aside id="sidebar" role="navigation" className={`fixed inset-y-0 left-0 z-40 w-72 bg-white border-r border-gray-200 shadow-xl transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-100`}>
                 <div className="flex h-full flex-col justify-between">
                     <div>
                         <div className="flex items-center justify-between border-b border-gray-200 p-6 md:border-b-0 md:bg-slate-100">
-                            <div className="flex items-center gap-2">
-                                <div className="w-6 h-6 rounded bg-teal-600" />
-                                <span className="font-semibold text-gray-900">Panel</span>
-                            </div>
+                           
+                                <h1 className="text-base sm:text-lg font-medium text-teal-600 ">Dunder Mifflin</h1>
+
 
                             <button
                                 onClick={() => setIsOpen(false)}
@@ -40,9 +39,14 @@ export default function NavBar() {
             {!isOpen && (
                 <button
                     onClick={() => setIsOpen(true)}
-                    className="md:hidden fixed top-4 left-4 z-50 rounded-full bg-white/95 p-3 shadow-lg border border-slate-200 text-slate-700 hover:bg-slate-100 transition"
+                    aria-expanded={isOpen}
+                    aria-controls="sidebar"
+                    aria-label="Abrir menú"
+                    className="md:hidden fixed top-6 left-4 z-60 rounded-full bg-white/95 p-3 shadow-lg border border-slate-200 text-slate-700 hover:bg-slate-100 transition"
                 >
-                    <Menu className="w-6 h-6" />
+                    <span className="block w-7 h-0.5 bg-slate-700 my-1" />
+                    <span className="block w-7 h-0.5 bg-slate-700 my-1" />
+                    <span className="block w-7 h-0.5 bg-slate-700 my-1" />
                 </button>
             )}
 

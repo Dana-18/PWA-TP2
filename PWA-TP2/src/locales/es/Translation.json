@@ -25,10 +25,10 @@
     },
 
     "sidebar": {
-        "dashboard": "Panel",
+        "dashboard": "Inicio",
         "routines": "Rutinas", 
         "favorites": "Favoritos",
-        "settings": "Configuración",
+        "catalog": "Catalogo",
         "newRoutine": "Crear nueva rutina"
     },
 

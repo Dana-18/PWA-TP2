@@ -13,21 +13,7 @@ export default function Header() {
     return (
         <header className="bg-slate-100 h-auto sm:h-16 w-full sticky top-0 z-50 border-b border-slate-200 shadow-sm">
             <div className="flex flex-col sm:flex-row items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-                <House className="-mr-60 -ml-45 md:h-fit rounded-xl hover:bg-gray-300 active:bg-gray-400 hover:shadow-md active:scale-95 rounded-md text-gray-800 transition-all duration-300 ease-in-out cursor-pointer" 
-                onClick={() => {
-                    navigate(Routes.home)
-                }}/>
-                <h1 className="text-base sm:text-lg font-medium text-teal-600 -ml-50 ">Dunder Mifflin</h1>
-
-
-                <SimpleButton
-                    text="Catalogo"
-                    onClick={() => {
-                        navigate(Routes.catalog);
-                    }}
-                    className="w-12"
-                    type="submit"
-                />
+                <div></div>
 
                 
 
