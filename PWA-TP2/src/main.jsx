@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   },
   { path: Routes.catalog, element: <Catalog /> },
   { path: Routes.createRoutine, element: <CreateRoutine /> },
-  { path: Routes.selectExercises, element: <SelectExercises /> }
+  { path: Routes.selectExercises, element: <SelectExercises /> }, 
   { path: Routes.details, element: <Details /> },
   { path: Routes.favorites, element: <FavoritesPage />},
 ]);
