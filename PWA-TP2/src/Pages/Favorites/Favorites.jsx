@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Header from "../../Components/Header/Header";
 import NavBar from "../../Components/Sidebar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import CardItem from "../../Components/CardItem/CardItem";
 import { useFavorites } from "../../Hooks/UseFavorites"; 
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
@@ -10,6 +11,12 @@ const FavoritesPage = () => {
     const [ allProducts, setfavoritesAllProducts ] = useState([]);
     const { favorites, toggleFavorite } = useFavorites();
     const { t } = useTranslation();
+    const [misFavoritos, setMisFavoritos] = useState([]);
+
+    const cargarFavoritos = () => {
+    const saved = JSON.parse(localStorage.getItem('productFavorites') || "[]");
+    setMisFavoritos(saved);
+};
 
     useEffect(() => {
         fetch('https://69e6e0ca68208c1debe8004e.mockapi.io/api/v1/ejercicios')
@@ -42,7 +49,9 @@ const FavoritesPage = () => {
                                     <div key={item.id}>
                                         <CardItem 
                                         key={item.id}
-                                        item={item}/>
+                                        item={item}
+                                        onAction={() => toggleFavorite(item.id)}
+                                        />
                                         <button 
                                             onClick={() => toggleFavorite(product.id)}
                                             className="mt-2 text-red-500 hover:underline"

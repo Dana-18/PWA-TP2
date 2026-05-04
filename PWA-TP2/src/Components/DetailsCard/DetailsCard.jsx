@@ -89,7 +89,7 @@ const DetailsCard = ({ exercise }) => {
 
                     <div className="lg:col-span-2 space-y-8">
                         <section>
-                            <h3 className="text-lg md:text-2xl font-bold mb-4">Technique Masterclass</h3>
+                            <h3 className="text-lg md:text-2xl font-bold mb-4">Tecnica y para que sirve</h3>
                             <div className="space-y-4 text-gray-600 leading-relaxed text-sm md:text-base">
                                 <p>{description}</p>
                                 <p className="border-l-4 border-[#005F41]/20 pl-4 italic">
@@ -118,26 +118,12 @@ const DetailsCard = ({ exercise }) => {
                                 {[
                                     { label: 'Primary Muscle', value: muscular_group, color: 'text-[#4A7C6D]' },
                                     { label: 'Target Intensity', value: details?.target_intensity || 'N/A' },
-                                    { label: 'Equipment', value: 'Olympic Barbell' }
+                                    { label: 'Equipment', value: details?.equipment }
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex justify-between items-center border-b border-gray-50 pb-3 text-xs md:text-sm">
                                         <span className="text-gray-400 font-medium">{item.label}</span>
                                         <span className={`font-bold ${item.color || 'text-gray-800'}`}>{item.value}</span>
                                     </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="order-2 lg:order-2 px-2">
-                            <h4 className="text-[10px] md:text-xs font-bold text-[#4A7C6D] mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
-                                <Award size={14} /> Secondary Activation
-                            </h4>
-                            <div className="flex flex-wrap gap-2">
-                                {['Triceps Brachii', 'Anterior Deltoids', 'Serratus'].map(mus => (
-                                    <span key={mus} className="px-3 py-1.5 border border-gray-200 rounded-full text-[9px] md:text-[10px] font-bold
-                                    text-gray-500 uppercase tracking-tighter hover:bg-gray-50 transition-colors">
-                                        {mus}
-                                    </span>
                                 ))}
                             </div>
                         </div>
