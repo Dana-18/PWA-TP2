@@ -25,10 +25,10 @@
     },
 
     "sidebar": {
-        "dashboard": "Dashboard",
+        "dashboard": "Home",
         "routines": "Routines", 
         "favorites": "Favorites",
-        "settings": "Settings",
+        "catalog": "Catalog",
         "newRoutine": "Create new routine"
     },
 
