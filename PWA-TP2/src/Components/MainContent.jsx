@@ -5,12 +5,11 @@ import { useState } from "react";
 import EmptyStateCard from "./EmptyStateCard";
 
 export default function MainContent ({className}) {
-    const [rutina, setRutina] = useState(() => {
-        const rutinaGuardada = localStorage.getItem("rutinaActiva");
-        return rutinaGuardada ? JSON.parse(rutinaGuardada) : null;
+    const [rutinaActivaId, setRutinaActiva] = useState(() => {
+        const activeRoutineId = localStorage.getItem("activeRoutine");
+        return activeRoutineId ? JSON.parse(activeRoutineId) : null;
     });
-
-    if(!rutina) {
+    if(!rutinaActivaId) {
         return ( 
             <main className={`bg-[#e0dbc5] gap-4 flex flex-col items-center justify-center p-4 md:px-24${className}`}>
                 <EmptyStateCard />
@@ -21,7 +20,7 @@ export default function MainContent ({className}) {
         <>
             <main className={`bg-[#e0dbc5] gap-4 flex flex-col justify-center p-4 md:px-48 ${className}`}>
                 <Title titulo="Mis Rutinas" descripcion="Tu espacio de crecimiento."/>
-                <MainCard />
+                <MainCard rutinaActiva={rutinaActivaId}/>
                 <RoutineArchive />
             </main>  
         </>
