@@ -5,22 +5,18 @@ import { Heart } from "lucide-react";
 import { useFavorites } from '../../hooks/useFavorites';
 
 const CardItem = ({ item, onAction }) => {
-    // Obtenemos el estado de favoritos y la función de alternancia[cite: 7, 8]
+    
     const { favorites, toggleFavorite } = useFavorites();
     const navigate = useNavigate();
     
-    // Desestructuramos las propiedades del item[cite: 7, 8]
-    const { id, name, description, image, difficulty, muscular_group } = item;
+     const { id, name, description, image, difficulty, muscular_group } = item;
 
-    // Verificamos si este elemento está en la lista de favoritos[cite: 7, 8]
-    const isFavorite = favorites.includes(id);
+     const isFavorite = favorites.includes(id);
 
     const handleFavoriteClick = () => {
-        // Si existe onAction (pasada desde la página), la ejecutamos para actualizar el padre[cite: 8, 9]
-        if (onAction) {
+          if (onAction) {
             onAction();
         } else {
-            // Si no (ej. en la Home), simplemente usamos la lógica local del hook[cite: 8]
             toggleFavorite(id);
         }
     };
