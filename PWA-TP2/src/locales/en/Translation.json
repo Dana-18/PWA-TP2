@@ -27,7 +27,7 @@
     "sidebar": {
         "dashboard": "Dashboard",
         "routines": "Routines", 
-        "progress": "Progress",
+        "favorites": "Favorites",
         "settings": "Settings",
         "newRoutine": "Create new routine"
     },
@@ -65,7 +65,8 @@
             "mobility": "movbility",
             "strength": "strength",
             "beginner": "advanced"
-        }
+        },
+        "items": "No favorites yet, explore the catalog and add your favorite exercises here!"
     },
 
     "customRoutine": {

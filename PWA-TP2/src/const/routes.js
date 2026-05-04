@@ -4,4 +4,5 @@ export const Routes = {
   details: "/details/:id",
   createRoutine: "/create-routine",
   selectExercises: "/select-exercises/:id",
+  favorites: "/favorites",
 };
