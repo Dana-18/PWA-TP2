@@ -1,6 +1,6 @@
 import { useLocation } from "react-router";
 import Footer from "../../Components/Footer/Footer";
-import Navbar from "../../Components/Sidebar/Navbar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import Header from "../../Components/Header/Header";
 import DetailsCard from "../../Components/DetailsCard/DetailsCard";
 import { useTranslation } from "react-i18next";
@@ -13,7 +13,7 @@ export default function Details() {
 
     return (
         <div className="min-h-screen bg-slate-100 text-slate-900 md:grid md:grid-cols-[280px_minmax(0,1fr)]">
-             <Navbar />
+             <Sidebar />
             <div className="flex flex-col min-h-screen">
                 <Header />
                 <div className="flex-1 overflow-y-auto bg-[#e0dbc5] py-8 md:py-16 px-4 md:px-8 flex items-center justify-center">

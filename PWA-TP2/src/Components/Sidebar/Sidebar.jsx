@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { X, Plus } from "lucide-react";
-import NavItems from './NavItems';
+import SidebarItems from './SidebarItems';
 import { useTranslation} from "react-i18next";
 
-export default function NavBar() {
+export default function Sidebar() {
     const [isOpen, setIsOpen] = useState(false);
     const { t } = useTranslation();
     return (
@@ -24,7 +24,7 @@ export default function NavBar() {
                             </button>
                         </div>
 
-                        <NavItems />
+                        <SidebarItems />
                     </div>
 
                     <div className="p-6">
