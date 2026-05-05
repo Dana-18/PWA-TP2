@@ -39,7 +39,7 @@
     },
 
     "catalog": {
-        "title": "explore by muscle group",
+        "title": "explore by excercises",
         "description": "find the perfect moves for your workout sesion",
         "filter": {
            "all": "all",

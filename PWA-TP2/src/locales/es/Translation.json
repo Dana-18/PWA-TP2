@@ -38,7 +38,7 @@
     },
 
     "catalog": {
-        "title": "explorar por grupo muscular",
+        "title": "explorar por ejercicios",
         "description": "encuentra los movimientos perfectos para tu sesión de entrenamiento",
         "filter": {
            "all": "todos",
