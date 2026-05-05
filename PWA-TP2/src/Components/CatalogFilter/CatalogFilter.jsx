@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CardItem from "../../Components/CardItem/CardItem";
+import CardItem from "../CardItem/CardItem";
 import { useTranslation } from 'react-i18next';
 
 const ExerciseGallery = ({datos}) => {

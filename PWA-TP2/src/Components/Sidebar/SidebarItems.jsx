@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { Routes } from "../../const/routes";
 
 
-export default function NavItems() {
+export default function SidebarItems() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 

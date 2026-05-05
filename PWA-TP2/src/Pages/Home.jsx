@@ -1,6 +1,6 @@
 import Footer from "../Components/Footer/Footer";
 import MainContent from "../Components/MainContent";
-import Navbar from "../Components/Sidebar/Navbar";
+import Sidebar from "../Components/Sidebar/Sidebar";
 import Header from "../Components/Header/Header";
 import EjerciciosList from "../Components/Ejercicios/EjerciciosList";
 
@@ -19,7 +19,7 @@ export default function Home() {
 
     return (
         <div className="min-h-screen bg-slate-100 text-slate-900 md:grid md:grid-cols-[280px_minmax(0,1fr)]">
-             <Navbar />
+             <Sidebar />
             <div className="flex flex-col min-h-screen">
                 <Header />
                 <div className="flex-1 overflow-y-auto bg-white">

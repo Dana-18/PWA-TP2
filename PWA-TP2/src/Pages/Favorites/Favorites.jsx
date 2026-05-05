@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "../../Components/Header/Header";
-import NavBar from "../../Components/Sidebar/Navbar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import Footer from "../../Components/Footer/Footer";
 import CardItem from "../../Components/CardItem/CardItem";
 import { useFavorites } from "../../Hooks/UseFavorites"; 
@@ -31,7 +31,7 @@ const FavoritesPage = () => {
     return (
         <>
         <div className="min-h-screen bg-slate-100 text-slate-900 md:grid md:grid-cols-[280px_minmax(0,1fr)]">
-            <NavBar />
+            <Sidebar />
             <div className="flex flex-col min-h-screen">
                 <Header />
                 <main className='bg-[#e0dbc5] gap-4 flex flex-col justify-center p-4 md:px-48 overflow-y-auto flex-1'>

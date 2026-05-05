@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import Header from "../../Components/Header/Header";
-import Navbar from "../../Components/Sidebar/Navbar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import Footer from "../../Components/Footer/Footer";
 import { ChevronLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -40,7 +40,7 @@ export default function CreateRoutine() {
 
     return (
         <div className="min-h-screen bg-slate-100 text-slate-900 md:grid md:grid-cols-[280px_minmax(0,1fr)]">
-            <Navbar />
+            <Sidebar />
             <div className="flex flex-col min-h-screen">
                 <Header />
                 <div className="flex-1 overflow-y-auto bg-[#e0dbc5]">
