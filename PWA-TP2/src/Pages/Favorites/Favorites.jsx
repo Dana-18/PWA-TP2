@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Header from "../../Components/Header/Header";
-import Sidebar from "../../Components/Sidebar/Sidebar";
-import Footer from "../../Components/Footer/Footer";
-import CardItem from "../../Components/CardItem/CardItem";
+import Header from "../../Renombradotemporal/Header/Header";
+import Sidebar from "../../Renombradotemporal/Sidebar/Sidebar";
+import Footer from "../../Renombradotemporal/Footer/Footer";
+import CardItem from "../../Renombradotemporal/CardItem/CardItem";
 import { useFavorites } from "../../Hooks/UseFavorites"; 
 import { useTranslation } from "react-i18next";
 import { useState } from "react";

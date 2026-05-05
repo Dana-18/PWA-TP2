@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate , useParams} from "react-router";
-import Header from "../../Components/Header/Header";
-import Sidebar from "../../Components/Sidebar/Sidebar";
-import Footer from "../../Components/Footer/Footer";
+import Header from "../../Renombradotemporal/Header/Header";
+import Sidebar from "../../Renombradotemporal/Sidebar/Sidebar";
+import Footer from "../../Renombradotemporal/Footer/Footer";
 import { ChevronLeft, Plus, Trash2, Search } from "lucide-react";
 import { useTranslation } from "react-i18next"; 
 
