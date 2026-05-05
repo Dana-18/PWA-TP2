@@ -92,7 +92,7 @@
 
     "createRoutine": {
         "title": "Design a rhythm to your measure",
-        "nameButton": "name your routine",
+        "nameButton": "Name your routine",
         "day": "DAY SELECTED",
         "days": "DAYS SELECTED",
         "button": "CONTINUE"
