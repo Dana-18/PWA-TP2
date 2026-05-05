@@ -1,8 +1,8 @@
-import Footer from "../Renombradotemporal/Footer/Footer";
-import MainContent from "../Renombradotemporal/MainContent";
-import Sidebar from "../Renombradotemporal/Sidebar/Sidebar";
-import Header from "../Renombradotemporal/Header/Header";
-import EjerciciosList from "../Renombradotemporal/Ejercicios/EjerciciosList";
+import Footer from "../Components/Footer/Footer";
+import MainContent from "../Components/MainContent";
+import Sidebar from "../Components/Sidebar/Sidebar";
+import Header from "../Components/Header/Header";
+import EjerciciosList from "../Components/Ejercicios/EjerciciosList";
 
 export default function Home() {
 

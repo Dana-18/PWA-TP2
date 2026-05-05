@@ -1,8 +1,8 @@
 import { useLocation } from "react-router";
-import Footer from "../../Renombradotemporal/Footer/Footer";
-import Sidebar from "../../Renombradotemporal/Sidebar/Sidebar";
-import Header from "../../Renombradotemporal/Header/Header";
-import DetailsCard from "../../Renombradotemporal/DetailsCard/DetailsCard";
+import Footer from "../../Components/Footer/Footer";
+import Sidebar from "../../Components/Sidebar/Sidebar";
+import Header from "../../Components/Header/Header";
+import DetailsCard from "../../Components/DetailsCard/DetailsCard";
 import { useTranslation } from "react-i18next";
 
 export default function Details() {
