@@ -8,12 +8,12 @@ export default function NavBar() {
     const { t } = useTranslation();
     return (
         <>
-            <aside id="sidebar" role="navigation" className={`fixed inset-y-0 left-0 z-40 w-72 bg-white border-r border-gray-200 shadow-xl transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-100`}>
+            <aside id="sidebar" role="navigation" className={`fixed inset-y-0 left-0 z-40 w-72 bg-slate-50 border-none shadow-xl transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-200`}>
                 <div className="flex h-full flex-col justify-between">
                     <div>
-                        <div className="flex items-center justify-between border-b border-gray-200 p-6 md:border-b-0 md:bg-slate-100">
+                        <div className="flex items-center justify-between border-b border-gray-200 p-6 md:border-b-0 md:bg-slate-200">
                            
-                                <h1 className="text-base sm:text-lg font-medium text-teal-600 ">Dunder Mifflin</h1>
+                                <h1 className="text-base sm:text-3xl md:font-bold font-medium text-teal-600 ">Dunder Mifflin</h1>
 
 
                             <button

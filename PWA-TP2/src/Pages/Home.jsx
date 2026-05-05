@@ -22,7 +22,7 @@ export default function Home() {
              <Navbar />
             <div className="flex flex-col min-h-screen">
                 <Header />
-                <div className="flex-1 overflow-y-auto bg-[#e0dbc5]">
+                <div className="flex-1 overflow-y-auto bg-white">
                     <EjerciciosList />
                     <MainContent />
                 </div>

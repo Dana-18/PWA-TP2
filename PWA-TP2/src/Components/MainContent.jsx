@@ -11,15 +11,15 @@ export default function MainContent ({className}) {
     });
     if(!rutinaActivaId) {
         return ( 
-            <main className={`bg-[#e0dbc5] gap-4 flex flex-col items-center justify-center p-4 md:px-24${className}`}>
+            <main className={`bg-white gap-4 flex flex-col items-center justify-center p-4 md:px-24${className}`}>
                 <EmptyStateCard />
             </main>
         );
     } else {
          return (
         <>
-            <main className={`bg-[#e0dbc5] gap-4 flex flex-col justify-center p-4 md:px-48 ${className}`}>
-                <Title titulo="Mis Rutinas" descripcion="Tu espacio de crecimiento."/>
+            <main className={`bg-white gap-4 flex flex-col justify-center p-4 md:px-24 ${className}`}>
+                <Title titulo="Mis Rutinas" className="text-teal-600" descripcion="Tu espacio de crecimiento."/>
                 <MainCard rutinaActiva={rutinaActivaId}/>
                 <RoutineArchive />
             </main>  

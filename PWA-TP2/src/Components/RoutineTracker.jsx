@@ -29,7 +29,7 @@ export default function RoutineTracker({ className }) {
 
   return (
     <>
-      <div className={`bg-[#e0dbc5] w-full rounded-2xl h-20 p-4 ${className}`}>
+      <div className={`bg-white w-full rounded-2xl h-20 p-4 ${className}`}>
         <div className="flex justify-between items-center w-full">
           {weekDates.map((dateString, index) => {
             const status = history[dateString];

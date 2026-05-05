@@ -1,6 +1,6 @@
 export default function Title({titulo, descripcion, size="large", className, children=""}) {
-    let titleClasses = "font-bold text-stone-800 tracking-tight";
-    let descriptionClasses = "font-normal text-stone-500 mt-2";
+    let titleClasses = "font-bold tracking-tight";
+    let descriptionClasses = "font-normal  mt-2";
 
     if (size === "medium") {
         titleClasses += " text-2xl";
@@ -16,8 +16,8 @@ export default function Title({titulo, descripcion, size="large", className, chi
     return(
         <>
             <div className={`flex flex-col ${className}`}>
-                <p className={`flex flex-row items-center ${titleClasses}`}>{titulo}{children}</p>
-                <p className={descriptionClasses}>{descripcion}</p>
+                <p className={`flex flex-row items-center ${titleClasses} ${className}`}>{titulo}{children}</p>
+                <p className={`{descriptionClasses} ${className}`}>{descripcion}</p>
             </div>
             
         </>
