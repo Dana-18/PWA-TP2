@@ -11,7 +11,6 @@ export default function SidebarItems() {
 
   const menuItems = [
     { id: 1, name: t('sidebar.dashboard'), icon: Home, route: Routes.home },
-    { id: 2, name: t('sidebar.routines'), icon: Route, route: Routes.catalog },
     { id: 3, name: t('sidebar.favorites'), icon: Heart, route: Routes.favorites },
     { id: 4, name: t('sidebar.catalog'), icon: Newspaper, route: Routes.catalog },
   ];
