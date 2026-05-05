@@ -11,18 +11,18 @@ export const LanguageSwitcher = () => {
     }
 
     return (
-        <div className="flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 ml-2 border border-slate-300 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
+        <div className="flex ml-auto items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-2 ml-2 border border-slate-500 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
             <button
                 type="button"
-                className={`text-[10px] sm:text-xs font-medium rounded-md px-2 py-1 transition-colors duration-150 ${i18n.language === 'es' ? 'bg-slate-200 text-slate-900' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900 active:bg-slate-200'}`}
+                className={`text-[10px] md:text-lg sm:text-xs font-medium rounded-md px-2 py-1 transition-colors duration-150 ${i18n.language === 'es' ? 'bg-slate-200 text-slate-900' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900 active:bg-slate-200'}`}
                 onClick={() => changeLanguage("es")}
             >
                 ES
             </button>
-            <span className="text-slate-400 text-[10px] sm:text-xs">•</span>
+            <span className="text-slate-400 md:text-lg text-[10px] sm:text-xs">•</span>
             <button
                 type="button"
-                className={`text-[10px] sm:text-xs font-medium rounded-md px-2 py-1 transition-colors duration-150 ${i18n.language === 'en' ? 'bg-slate-200 text-slate-900' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900 active:bg-slate-200'}`}
+                className={`text-[10px] md:text-lg sm:text-xs font-medium rounded-md px-2 py-1 transition-colors duration-150 ${i18n.language === 'en' ? 'bg-slate-200 text-slate-900' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900 active:bg-slate-200'}`}
                 onClick={() => changeLanguage("en")}
             >
                 EN
