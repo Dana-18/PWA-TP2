@@ -14,7 +14,7 @@ export default function Footer({
         <footer className="bg-gray-200 rounded-xl p-4 sm:p-6  border-t border-gray-300 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
            
                 <div className="text-sm text-gray-700 text-center sm:text-left">
-                    <div className="font-semibold">Contacto</div>
+                    <div className="font-semibold">{t("footer.contact")}</div>
                     <div className="text-[13px]">Av. Falsa 123, Palermo, Buenos Aires</div>
                     <a href="mailto:contacto@dundermifflin.example" className="text-teal-600 hover:underline">contacto@dundermifflin.example</a>
                 </div>

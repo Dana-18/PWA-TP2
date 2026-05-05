@@ -4,6 +4,7 @@ import Header from "../../Components/Header/Header";
 import Navbar from "../../Components/Sidebar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import { ChevronLeft } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function CreateRoutine() {
     const navigate = useNavigate();
@@ -11,6 +12,7 @@ export default function CreateRoutine() {
     const daysFullNames = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
     const [selectedDays, setSelectedDays] = useState([]);
     const [routineName, setRoutineName] = useState("");
+    const { t } = useTranslation();
 
     const toggleDay = (index) => {
         setSelectedDays((prev) => {
@@ -55,13 +57,13 @@ export default function CreateRoutine() {
 
                         <div className="max-w-2xl w-full bg-white rounded-4xl p-8 md:p-12 shadow-lg">
                             <h1 className="text-4xl font-bold text-center text-gray-900 mb-6">
-                                Diseña un ritmo a tu medida.
+                                {t("createRoutine.title")}
                             </h1>
                             
                             <div className="mb-8">
                                 <input
                                     type="text"
-                                    placeholder="Nombre de tu rutina"
+                                    placeholder={t("createRoutine.nameButton")}
                                     value={routineName}
                                     onChange={(e) => setRoutineName(e.target.value)}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-center"
@@ -86,7 +88,7 @@ export default function CreateRoutine() {
                             {/* Counter and Continue Button */}
                             <div className="flex flex-col items-center gap-6">
                                 <div className="text-gray-600 text-sm">
-                                    {selectedDays.length} {selectedDays.length === 1 ? "DAY" : "DAYS"} SELECTED
+                                    {selectedDays.length} {selectedDays.length === 1 ? t("createRoutine.day") : t("createRoutine.days")} 
                                 </div>
                                 <button
                                     onClick={handleContinue}
@@ -97,7 +99,7 @@ export default function CreateRoutine() {
                                             : "bg-gray-400 cursor-not-allowed opacity-50"
                                     }`}
                                 >
-                                    CONTINUE →
+                                    {t("createRoutine.button")} →
                                 </button>
                             </div>
                         </div>

@@ -3,10 +3,12 @@ import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Sidebar/Navbar";
 import Header from "../../Components/Header/Header";
 import DetailsCard from "../../Components/DetailsCard/DetailsCard";
+import { useTranslation } from "react-i18next";
 
 export default function Details() {
     const location = useLocation();
     const exercise = location.state?.exercise;
+    const { t } = useTranslation();
 
 
     return (
@@ -15,7 +17,7 @@ export default function Details() {
             <div className="flex flex-col min-h-screen">
                 <Header />
                 <div className="flex-1 overflow-y-auto bg-[#e0dbc5] py-8 md:py-16 px-4 md:px-8 flex items-center justify-center">
-                    {exercise ? <DetailsCard exercise={ exercise } /> : <div className="p-8 text-center">Ejercicio no encontrado</div>}
+                    {exercise ? <DetailsCard exercise={ exercise } /> : <div className="p-8 text-center">{t("detailsPage.notFound")}</div>}
                 </div>
                 <Footer />
             </div>
