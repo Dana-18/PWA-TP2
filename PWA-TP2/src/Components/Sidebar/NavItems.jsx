@@ -27,10 +27,10 @@ export default function NavItems() {
                 type="button"
                 onClick={() => item.route && navigate(item.route)}
                 disabled={!item.route}
-                className="w-full text-left flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="cursor-pointer w-full text-left flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Icon className="w-7 h-7" />
-                <span className="text-medium font-medium">{item.name}</span>
+                <span className="text-medium  hover:text-emerald-500 hover:scale-110 font-medium">{item.name}</span>
               </button>
             </li>
           );

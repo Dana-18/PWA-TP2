@@ -8,8 +8,8 @@ export default function NavBar() {
     const { t } = useTranslation();
     return (
         <>
-            <aside id="sidebar" role="navigation" className={`fixed inset-y-0 left-0 z-40 w-72 bg-slate-50 border-none shadow-xl transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-200`}>
-                <div className="flex h-full flex-col justify-between">
+            <aside id="sidebar" role="navigation" className={`fixed inset-y-0 left-0 z-40 w-72 bg-slate-50 border-none relative transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-200`}>
+                <div className="flex h-full flex-col justify-between relative">
                     <div>
                         <div className="flex items-center justify-between border-b border-gray-200 p-6 md:border-b-0 md:bg-slate-200">
                            
@@ -28,12 +28,13 @@ export default function NavBar() {
                     </div>
 
                     <div className="p-6">
-                        <button className="w-full rounded-full bg-teal-600 px-4 py-3 text-white font-semibold transition-colors duration-200 hover:bg-teal-700 flex items-center justify-center gap-2">
+                        <button className="w-full rounded-full bg-emerald-500 px-4 py-3 text-white font-semibold transition-colors duration-200 hover:bg-teal-700 flex items-center justify-center gap-2">
                             <Plus className="w-5 h-5" />
                             {t("sidebar.newRoutine")}  
                         </button>
                     </div>
                 </div>
+                <div className="absolute right-0 top-24 z-10 w-[0.5px] h-[90%] bg-gradient-to-r from-slate-300 to-transparent"></div>
             </aside>
 
             {!isOpen && (
