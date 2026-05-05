@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import CardItem from "../../Components/CardItem/CardItem";
+import { useTranslation } from 'react-i18next';
 
 const ExerciseGallery = ({datos}) => {
 
+    const { t } = useTranslation();
     const [categoriaActiva, setCategoriaActiva] = useState('Todos');
     const [datosCompletos, setDatosCompletos] = useState([]);
     const [cargandoFiltro, setCargandoFiltro] = useState(false);
@@ -33,7 +35,7 @@ const ExerciseGallery = ({datos}) => {
 
     return (
         <div className="w-full">
-            <h2 className="text-2xl font-bold mb-6">Explora por Grupo Muscular</h2>
+            <h2 className="text-2xl font-bold mb-6">{t("catalog.title")}</h2>
 
             <div className="flex flex-wrap gap-2 mb-6">
                 {categorias.map((cat) => (

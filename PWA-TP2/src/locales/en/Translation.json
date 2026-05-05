@@ -33,7 +33,9 @@
     },
 
     "footer": {
-        "name": "Group 8"
+        "name": "Group 8",
+        "contact": "Contact"
+
     },
 
     "catalog": {
@@ -48,7 +50,7 @@
            "arms": "arms"
 
         },
-        "button": "details"
+        "button": "view details"
     },
 
     "exercise log": {
@@ -72,5 +74,45 @@
     "customRoutine": {
         "button1": "edit routine structure",
         "button2": "start session"
+    },
+
+    "detailsPage": {
+        "button": "add to routine",
+        "subtitle": "Technique and purpose",
+        "metrics": {
+            "title": "Execution metrics",
+            "primary": "Primary muscle",
+            "target": "Target Intensity",
+            "equipment": "Equipments"
+        },
+        "notFound": "Exercise not found",
+        "breathing":"Breathing",
+        "level": "Level"
+    },
+
+    "createRoutine": {
+        "title": "Design a rhythm to your measure",
+        "nameButton": "name your routine",
+        "day": "DAY SELECTED",
+        "days": "DAYS SELECTED",
+        "button": "CONTINUE"
+    },
+
+    "createRoutine2": {
+        "backButton": "Back",
+        "title": "Movement Library",
+        "search": "Search movements...",
+        "description": "Select a movement from the library to add",
+        "load": "Loading movements...",
+        "notFound": "No exercises found",
+        "day": "Day",
+        "finish": "Finish and save routine",
+        "sets": "Target sets",
+        "reps": "Target reps"
+    },
+
+    "emptyCard": {
+        "title": "Your training starts here",
+        "description": "Design a routine and start your fitness journey"
     }
 }

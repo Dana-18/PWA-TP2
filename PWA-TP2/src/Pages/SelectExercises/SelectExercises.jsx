@@ -4,6 +4,7 @@ import Header from "../../Components/Header/Header";
 import Navbar from "../../Components/Sidebar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import { ChevronLeft, Plus, Trash2, Search } from "lucide-react";
+import { useTranslation } from "react-i18next"; 
 
 export default function SelectExercises() {
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function SelectExercises() {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("Todos");
+    const { t } = useTranslation();
     
     
     const [routineData, setRoutineData] = useState(() => {
@@ -140,17 +142,17 @@ export default function SelectExercises() {
                                 className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-6"
                             >
                                 <ChevronLeft className="w-5 h-5" />
-                                <span>BACK</span>
+                                <span>{t("createRoutine2.backButton")}</span>
                             </button>
 
-                            <h2 className="text-xl font-bold text-gray-900 mb-4">Movement Library</h2>
+                            <h2 className="text-xl font-bold text-gray-900 mb-4">{t("createRoutine2.title")}</h2>
 
                             {/* Search */}
                             <div className="mb-4 relative">
                                 <Search className="w-4 h-4 absolute left-3 top-3 text-gray-400" />
                                 <input
                                     type="text"
-                                    placeholder="Search movements..."
+                                    placeholder={t("createRoutine2.search")}
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
                                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500"
@@ -177,9 +179,9 @@ export default function SelectExercises() {
                             {/* Exercises List */}
                             <div className="flex-1 overflow-y-auto space-y-2">
                                 {loading ? (
-                                    <p className="text-gray-500 text-sm">Cargando ejercicios...</p>
+                                    <p className="text-gray-500 text-sm">{t("createRoutine2.load")}</p>
                                 ) : filteredExercises.length === 0 ? (
-                                    <p className="text-gray-500 text-sm">No exercises found</p>
+                                    <p className="text-gray-500 text-sm">{t("createRoutine2.notFound")}</p>
                                 ) : (
                                     filteredExercises.map((exercise) => (
                                         <div
@@ -221,7 +223,7 @@ export default function SelectExercises() {
                                                     : "text-gray-600 hover:text-gray-900"
                                             }`}
                                         >
-                                            Day {index + 1}: {day}
+                                            {t("createRoutine2.day")} {index + 1}: {day}
                                         </button>
                                     ))}
                                 </div>
@@ -231,7 +233,7 @@ export default function SelectExercises() {
                             <div className="flex-1 overflow-y-auto mb-6">
                                 {routineExercises[currentDay]?.length === 0 ? (
                                     <div className="flex items-center justify-center h-64 text-gray-500">
-                                        <p>Select a movement from the library to add</p>
+                                        <p>{t("createRoutine2.description")}</p>
                                     </div>
                                 ) : (
                                     <div className="space-y-4">
@@ -256,7 +258,7 @@ export default function SelectExercises() {
                                                 <div className="grid grid-cols-2 gap-4">
                                                     <div>
                                                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                                                            TARGET SETS
+                                                            {t("createRoutine2.sets")}
                                                         </label>
                                                         <div className="flex items-center gap-2">
                                                             <button
@@ -284,7 +286,7 @@ export default function SelectExercises() {
 
                                                     <div>
                                                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                                                            TARGET REPS
+                                                            {t("createRoutine2.reps")}
                                                         </label>
                                                         <div className="flex items-center gap-2">
                                                             <button
@@ -322,7 +324,7 @@ export default function SelectExercises() {
                                     onClick={handleFinish}
                                     className="px-8 py-3 bg-emerald-500 text-white font-semibold rounded-full hover:bg-emerald-600 transition-colors"
                                 >
-                                    Finish and Save Routine →
+                                    {t("createRoutine2.finish")} →
                                 </button>
                             </div>
                         </div>

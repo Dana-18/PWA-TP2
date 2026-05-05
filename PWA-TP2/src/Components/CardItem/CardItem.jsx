@@ -3,9 +3,10 @@ import { useNavigate } from "react-router";
 import { Routes } from '../../const/routes';
 import { Heart } from "lucide-react";
 import { useFavorites } from '../../hooks/useFavorites';
+import { useTranslation } from 'react-i18next';
 
 const CardItem = ({ item, onAction }) => {
-    
+    const {t} = useTranslation();
     const { favorites, toggleFavorite } = useFavorites();
     const navigate = useNavigate();
     
@@ -61,7 +62,7 @@ const CardItem = ({ item, onAction }) => {
                         onClick={() => navigate(Routes.details, { state: { exercise: item } })}
                         className="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-teal-300"
                     >
-                        View details
+                        {t("catalog.button")}
                         <svg className="rtl:rotate-170 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>

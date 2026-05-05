@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Play, Plus, Target, Wind, Award, X } from 'lucide-react';
+import { useTranslation } from "react-i18next";
 
 const DetailsCard = ({ exercise }) => {
     const [showVideo, setShowVideo] = useState(true);
+    const { t } = useTranslation();
 
     if (!exercise) {
         return <div className="p-8 text-center">No exercise data available</div>;
@@ -22,7 +24,7 @@ const DetailsCard = ({ exercise }) => {
                                 {muscular_group}
                             </span>
                             <span className="px-3 py-1 bg-[#F0F0F0] text-[#707070] text-[10px] sm:text-xs font-bold rounded-full uppercase tracking-wider">
-                                Nivel {difficulty}
+                                {t("detailsPage.level")} {difficulty}
                             </span>
                         </div>
                         <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight leading-tight italic uppercase">
@@ -31,7 +33,7 @@ const DetailsCard = ({ exercise }) => {
                     </div>
                     <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#005F41] hover:bg-[#004a33] text-white 
                     px-6 py-3 rounded-full font-semibold transition-all active:scale-95">
-                        <span>Add to Routine</span> <Plus size={18} />
+                        <span>{t("detailsPage.button")}</span> <Plus size={18} />
                     </button>
                 </div>
 
@@ -89,7 +91,7 @@ const DetailsCard = ({ exercise }) => {
 
                     <div className="lg:col-span-2 space-y-8">
                         <section>
-                            <h3 className="text-lg md:text-2xl font-bold mb-4">Tecnica y para que sirve</h3>
+                            <h3 className="text-lg md:text-2xl font-bold mb-4">{t("detailsPage.subtitle")}</h3>
                             <div className="space-y-4 text-gray-600 leading-relaxed text-sm md:text-base">
                                 <p>{description}</p>
                                 <p className="border-l-4 border-[#005F41]/20 pl-4 italic">
@@ -101,7 +103,7 @@ const DetailsCard = ({ exercise }) => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="bg-[#E9F3F1] p-5 md:p-6 rounded-2xl">
                                 <div className="flex items-center gap-2 text-[#4A7C6D] font-bold text-xs md:text-sm mb-3 uppercase tracking-widest">
-                                    <Wind size={18} /> Respiracion
+                                    <Wind size={18} /> {t("detailsPage.breathing")}
                                 </div>
                                 <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
                                     {details?.breathing || 'No breathing instructions available'}
@@ -113,12 +115,12 @@ const DetailsCard = ({ exercise }) => {
                     {/* Sidebar Metrics */}
                     <div className="flex flex-col gap-8">
                         <div className="bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-gray-100 order-1 lg:order-1">
-                            <h3 className="text-lg font-bold mb-6">Execution metrics</h3>
+                            <h3 className="text-lg font-bold mb-6">{t("detailsPage.metrics.title")}</h3>
                             <div className="space-y-4">
                                 {[
-                                    { label: 'Primary Muscle', value: muscular_group, color: 'text-[#4A7C6D]' },
-                                    { label: 'Target Intensity', value: details?.target_intensity || 'N/A' },
-                                    { label: 'Equipment', value: details?.equipment }
+                                    { label: t("detailsPage.metrics.primary"), value: muscular_group, color: 'text-[#4A7C6D]' },
+                                    { label: t("detailsPage.metrics.target"), value: details?.target_intensity || 'N/A' },
+                                    { label: t("detailsPage.metrics.equipment"), value: details?.equipment }
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex justify-between items-center border-b border-gray-50 pb-3 text-xs md:text-sm">
                                         <span className="text-gray-400 font-medium">{item.label}</span>

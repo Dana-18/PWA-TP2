@@ -33,7 +33,8 @@
     },
 
     "footer": {
-        "name": "Grupo 8"
+        "name": "Grupo 8",
+        "contact": "Contacto"
     },
 
     "catalog": {
@@ -48,7 +49,7 @@
            "arms": "brazos"
 
         },
-        "button": "detalles"
+        "button": "ver detalles"
     },
 
     "exercise log": {
@@ -72,5 +73,46 @@
     "customRoutine": {
         "button1": "editar estructura de rutina",
         "button2": "iniciar sesión"
+    }, 
+
+    "detailsPage": {
+        "button": "Agregar a la rutina",
+        "subtitle": "Tecnica y para que sirve",
+        "metrics": {
+            "title": "Metricas de ejecucion",
+            "primary": "Musculo principal",
+            "target": "Intensidad objetivo",
+            "equipment": "Equipos necesarios"
+        },
+        "notFound": "Ejercicio no encontrado",
+        "breathing":"Respiracion",
+        "level": "Nivel"
+    },
+
+    "createRoutine": {
+        "title": "Diseña un ritmo a tu medida",
+        "nameButton": "Nombra tu rutina",
+        "day": "DIA SELECCIONADO",
+        "days": "DIAS SELECCIONADOS",
+        "button": "CONTINUAR"
+    },
+
+    "createRoutine2": {
+        "backButton": "Volver",
+        "title": "Libreria de movimientos",
+        "search": "Buscar movimientos...",
+        "description": "Selecciona un movimiento desde la libreria para agregarlo",
+        "load": "Cargando ejercicios...",
+        "notFound": "Ejercicios no encontrados",
+        "day": "Dia",
+        "finish": "Terminar y guardar rutina",
+        "sets": "Objetivo de series",
+        "reps": "Objetivo de repeticiones"
+    },
+
+    "emptyCard": {
+        "title": "Tu entrenamiento empieza acá",
+        "description": "Diseña tu rutina personalizada y comienza tu viaje"
     }
+    
 }
