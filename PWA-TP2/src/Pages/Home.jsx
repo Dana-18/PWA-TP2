@@ -18,9 +18,9 @@ export default function Home() {
     );
 
     return (
-        <div className="min-h-screen bg-slate-100 text-slate-900 md:grid md:grid-cols-[280px_minmax(0,1fr)]">
+        <div className="flex flex-col md:grid md:grid-cols-[280px_minmax(0,1fr)] md:min-h-screen bg-white md:bg-slate-100 text-slate-900">
              <Sidebar />
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col md:min-h-screen">
                 <Header />
                 <div className="flex-1 overflow-y-auto bg-white">
                     <EjerciciosList />

@@ -8,7 +8,7 @@ export default function Sidebar() {
     const { t } = useTranslation();
     return (
         <>
-            <aside id="sidebar" role="navigation" className={`fixed inset-y-0 left-0 z-40 w-72 bg-slate-50 border-none relative transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-200`}>
+            <aside id="sidebar" role="navigation" className={`fixed inset-y-0 left-0 z-40 w-72 bg-slate-50 border-none transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-200`}>
                 <div className="flex h-full bg-black flex-col justify-between relative">
                     <div>
                         <div className="flex items-center justify-between border-b border-gray-200 p-6 md:border-b-0 md:bg-black">
@@ -43,7 +43,7 @@ export default function Sidebar() {
                     aria-expanded={isOpen}
                     aria-controls="sidebar"
                     aria-label="Abrir menú"
-                    className="md:hidden fixed top-6 left-4 z-60 rounded-full bg-white/95 p-3 shadow-lg border border-slate-200 text-slate-700 hover:bg-slate-100 transition"
+                    className="md:hidden fixed top-3.5 left-3 z-60 rounded-lg bg-white/95 p-2 shadow-md border border-slate-200 text-slate-700 hover:bg-slate-100 transition"
                 >
                     <span className="block w-7 h-0.5 bg-slate-700 my-1" />
                     <span className="block w-7 h-0.5 bg-slate-700 my-1" />
@@ -53,7 +53,7 @@ export default function Sidebar() {
 
             {isOpen && (
                 <div
-                    className="md:hidden fixed inset-0 bg-black/50 z-30"
+                    className="md:hidden fixed inset-0 bg-black/50 z-35"
                     onClick={() => setIsOpen(false)}
                 />
             )}
