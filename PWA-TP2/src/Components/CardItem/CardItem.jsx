@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from "react-router";
 import { Routes } from '../../const/routes';
 import { Heart } from "lucide-react";
-import { useFavorites } from '../../hooks/useFavorites';
+import { useFavorites } from '../../Hooks/useFavorites';
 import { useTranslation } from 'react-i18next';
 
 const CardItem = ({ item, onAction }) => {
