@@ -38,7 +38,7 @@ const CardItem = ({ item, onAction }) => {
                 src={image || "https://via.placeholder.com/400x200"}
                 alt={name}
             />
-            <div className="p-5">
+            <div className="p-5  border border-gray-200 shadow-sm ">
                 <span className={`text-xs font-semibold px-2.5 py-0.5 rounded ${getDifficultyColor(difficulty)}`}>
                     Difficulty: {difficulty}
                 </span>

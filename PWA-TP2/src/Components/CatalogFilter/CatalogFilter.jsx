@@ -35,7 +35,7 @@ const ExerciseGallery = ({datos}) => {
 
     return (
         <div className="w-full">
-            <h2 className="text-2xl font-bold mb-6">{t("catalog.title")}</h2>
+            
 
             <div className="flex flex-wrap gap-2 mb-6">
                 {categorias.map((cat) => (

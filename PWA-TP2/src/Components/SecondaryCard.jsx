@@ -3,7 +3,7 @@ import SimpleButton from "./SimpleButton";
 
 export default function SecondaryCard ({nombreRutina="Rutina", descripcion="Descripcion de la rutina"}) {
     return (
-        <div className="px-6 py-3 justify-between rounded-3xl bg-[#141314] w-full md:w-3/4 flex">
+        <div className="px-6 py-3 justify-between rounded-3xl bg-[#141314] w-full flex">
             <div>
                 <Title titulo={nombreRutina} className="text-white" descripcion={descripcion} size="small"/>
             </div>
