@@ -20,7 +20,7 @@ export default function MainContent ({className}) {
         <>
             <main className={`bg-white gap-4 flex flex-col items-center justify-center p-4 md:px-24 ${className}`}>
                 <div className="w-full md:w-3/4 mx-auto">
-                    <div className="text-left mb-2 -ml-50">
+                    <div className="text-left mb-2 sm:items-center lg:-ml-50">
                         <Title titulo="Mis Rutinas" className="text-teal-600" descripcion="Tu espacio de crecimiento."/>
                     </div>
                     <MainCard rutinaActiva={rutinaActivaId}/>
