@@ -39,8 +39,8 @@
     },
 
     "catalog": {
-        "title": "explore by muscle group",
-        "description": "find the perfect moves for your workout sesion",
+        "title": "Explore by muscle group",
+        "description": "Find the perfect moves for your workout sesion",
         "filter": {
            "all": "all",
            "chest": "chest",
@@ -50,7 +50,7 @@
            "arms": "arms"
 
         },
-        "button": "view details"
+        "button": "View details"
     },
 
     "exercise log": {
@@ -61,8 +61,8 @@
 
     "favorites": {
         "title": "My favorites",
-        "description": "your personal collection of movements for your growth and restauration. A serene space designed to cultivate strength and mobility, at your own pace",
-        "button": "add to routine",
+        "description": "Your personal collection of movements for your growth and restauration. A serene space designed to cultivate strength and mobility, at your own pace",
+        "button": "Add to routine",
         "tag": {
             "mobility": "movbility",
             "strength": "strength",

@@ -52,12 +52,7 @@ const FavoritesPage = () => {
                                         item={item}
                                         onAction={() => toggleFavorite(item.id)}
                                         />
-                                        <button 
-                                            onClick={() => toggleFavorite(product.id)}
-                                            className="mt-2 text-red-500 hover:underline"
-                                        >
-                                            Quitar de favoritos
-                                        </button>
+                                        
                                     </div>
                                 ))}
                             </div>
