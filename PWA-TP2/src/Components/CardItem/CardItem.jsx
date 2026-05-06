@@ -59,7 +59,7 @@ const CardItem = ({ item, onAction }) => {
 
                 <div className="flex items-center gap-3">
                     <button 
-                        onClick={() => navigate(Routes.details, { state: { exercise: item } })}
+                        onClick={() => navigate(Routes.details.replace(':id', id), { state: { exercise: item } })}
                         className="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-4 focus:outline-none focus:ring-teal-300"
                     >
                         {t("catalog.button")}
