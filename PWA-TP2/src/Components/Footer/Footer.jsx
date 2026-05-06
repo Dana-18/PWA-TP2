@@ -11,7 +11,7 @@ export default function Footer({
 
     const { t } = useTranslation();
     return (
-        <footer className="bg-white md:rounded-none rounded-xl p-4 sm:p-6  border-t border-gray-300 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <footer className="bg-white md:rounded-none rounded-xl p-4 sm:p-6 md:py-2 border-none pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
            
                 <div className="text-sm text-gray-700 text-center sm:text-left">
                     <div className="font-semibold">{t("footer.contact")}</div>
