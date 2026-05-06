@@ -39,13 +39,13 @@ export default function CreateRoutine() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-100 text-slate-900 md:grid md:grid-cols-[280px_minmax(0,1fr)]">
+        <div className="md:h-screen bg-white text-slate-900 md:grid md:grid-cols-[280px_minmax(0,1fr)]">
             <Sidebar />
-            <div className="flex flex-col min-h-screen">
+            <div className="flex md:h-screen flex-col">
                 <Header />
-                <div className="flex-1 overflow-y-auto bg-[#e0dbc5]">
-                    <main className="flex flex-col items-center justify-center p-4 md:px-24 py-16">
-                        <div className="mb-8 self-start">
+                <div className="flex-1 bg-white">
+                    <main className="flex flex-col items-center justify-center p-4 md:px-24 py-4">
+                        <div className="self-start">
                             <button
                                 onClick={() => navigate("/")}
                                 className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
@@ -55,21 +55,21 @@ export default function CreateRoutine() {
                             </button>
                         </div>
 
-                        <div className="max-w-2xl w-full bg-white rounded-4xl p-8 md:p-12 shadow-lg">
-                            <h1 className="text-4xl font-bold text-center text-gray-900 mb-6">
+                        <div className="max-w-2xl w-full bg-[#141314] h-full rounded-4xl p-8 md:px-0 md:py-2 shadow-lg">
+                            <h1 className="text-4xl font-bold text-center text-emerald-500 mb-6">
                                 {t("createRoutine.title")}
                             </h1>
                             
-                            <div className="mb-8">
+                            <div className="mb-6 items-center flex flex-col">
                                 <input
                                     type="text"
                                     placeholder={t("createRoutine.nameButton")}
                                     value={routineName}
                                     onChange={(e) => setRoutineName(e.target.value)}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-center"
+                                    className="w-3/4 px-4 text-white py-3 border border-emerald-500 rounded-lg focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-center"
                                 />
                             </div>
-                            <div className="flex flex-wrap justify-center gap-4 mb-8">
+                            <div className="flex flex-wrap justify-center gap-2 mb-8">
                                 {days.map((day, index) => (
                                     <button
                                         key={index}
@@ -87,7 +87,7 @@ export default function CreateRoutine() {
 
                             {/* Counter and Continue Button */}
                             <div className="flex flex-col items-center gap-6">
-                                <div className="text-gray-600 text-sm">
+                                <div className="text-white text-sm">
                                     {selectedDays.length} {selectedDays.length === 1 ? t("createRoutine.day") : t("createRoutine.days")} 
                                 </div>
                                 <button
