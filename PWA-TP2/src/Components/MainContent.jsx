@@ -18,10 +18,10 @@ export default function MainContent ({className}) {
     } else {
          return (
         <>
-            <main className={`bg-white gap-4 flex flex-col justify-center p-4 md:px-24 ${className}`}>
+            <main className={`bg-white flex  gap-4 flex flex-col justify-center p-4 md:px-24 ${className}`}>
                 <Title titulo="Mis Rutinas" className="text-teal-600" descripcion="Tu espacio de crecimiento."/>
                 <MainCard rutinaActiva={rutinaActivaId}/>
-                <RoutineArchive />  
+                <RoutineArchive />
             </main>  
         </>
     );
