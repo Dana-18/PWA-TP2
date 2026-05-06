@@ -6,6 +6,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import Header from "../../Components/Header/Header";
 import ExerciseGallery from "../../Components/CatalogFilter/CatalogFilter";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Catalog() {
   const [datos, setDatos] = useState([]);
@@ -13,6 +14,7 @@ export default function Catalog() {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+   const { t } = useTranslation();
 
   const obtenerDatos = async (pageNum = 0) => {
     if (loading || !hasMore) return;
@@ -65,9 +67,10 @@ export default function Catalog() {
       <Sidebar />
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className='bg-[#e0dbc5] gap-4 flex flex-col justify-center p-4 md:px-48 overflow-y-auto flex-1'>
+        <main className='bg-white gap-4 flex flex-col justify-center p-4 md:px-48 overflow-y-auto flex-1'>
          <div className="mx-auto p-6">
-           <div className="mb-4 max-w-md mx-auto">
+          <h2 className="text-2xl font-bold mb-6">{t("catalog.title")}</h2>
+           <div className="mb-4 max-w-md mx-auto ml-0">
              <input
                type="text"
                value={searchTerm}

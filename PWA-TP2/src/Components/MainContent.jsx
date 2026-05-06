@@ -18,10 +18,14 @@ export default function MainContent ({className}) {
     } else {
          return (
         <>
-            <main className={`bg-white flex  gap-4 flex flex-col justify-center p-4 md:px-24 ${className}`}>
-                <Title titulo="Mis Rutinas" className="text-teal-600" descripcion="Tu espacio de crecimiento."/>
-                <MainCard rutinaActiva={rutinaActivaId}/>
-                <RoutineArchive />
+            <main className={`bg-white gap-4 flex flex-col items-center justify-center p-4 md:px-24 ${className}`}>
+                <div className="w-full md:w-3/4 mx-auto">
+                    <div className="text-left mb-2 -ml-50">
+                        <Title titulo="Mis Rutinas" className="text-teal-600" descripcion="Tu espacio de crecimiento."/>
+                    </div>
+                    <MainCard rutinaActiva={rutinaActivaId}/>
+                    <RoutineArchive />
+                </div>
             </main>  
         </>
     );

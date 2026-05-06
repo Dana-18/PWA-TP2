@@ -17,9 +17,9 @@ export default function Title({titulo, descripcion, size="large", className, chi
         <>
             <div className={`flex flex-col ${className}`}>
                 <p className={`flex flex-row items-center ${titleClasses} ${className}`}>{titulo}{children}</p>
-                <p className={`{descriptionClasses} ${className}`}>{descripcion}</p>
+                <p className={`${descriptionClasses} ${className}`}>{descripcion}</p>
             </div>
-            
+
         </>
     );
 }

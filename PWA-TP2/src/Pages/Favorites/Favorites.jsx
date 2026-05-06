@@ -34,7 +34,7 @@ const FavoritesPage = () => {
             <Sidebar />
             <div className="flex flex-col min-h-screen">
                 <Header />
-                <main className='bg-[#e0dbc5] gap-4 flex flex-col justify-center p-4 md:px-48 overflow-y-auto flex-1'>
+                <main className='bg-white gap-4 flex flex-col justify-center p-4 md:px-48 overflow-y-auto flex-1'>
                     <div className="mx-auto p-6">
                         <div className="p-6">
                             <h1 className="text-2xl font-bold mb-4"> {t('favorites.title')}</h1>
