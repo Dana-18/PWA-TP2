@@ -1,5 +1,4 @@
 import { StrictMode } from 'react'
-import { useEffect, useState } from "react";
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { Routes } from '../src/const/routes.js'
