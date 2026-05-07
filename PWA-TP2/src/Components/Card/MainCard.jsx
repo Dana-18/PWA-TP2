@@ -1,7 +1,7 @@
-import Title from "./Title";
-import Badge from "./Badge";
-import RoutineTracker from "./RoutineTracker";
-import Button from "./Button";
+import Title from "../Title/Title";
+import Badge from "../Badge/Badge";
+import RoutineTracker from "../Routine/RoutineTracker";
+import Button from "../Button/Button";
 import {SquarePen, ArrowRight} from "lucide-react";
 
 export default function MainCard ({rutinaActiva}) {

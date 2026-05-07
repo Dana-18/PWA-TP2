@@ -1,5 +1,5 @@
-import Button from "./Button";
-import Title from "./Title";
+import Button from "../Button/Button";
+import Title from "../Title/Title";
 import {Plus} from "lucide-react";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";

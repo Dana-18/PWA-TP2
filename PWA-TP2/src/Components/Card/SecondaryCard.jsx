@@ -1,5 +1,5 @@
-import Title from "./Title";
-import SimpleButton from "./SimpleButton";
+import Title from "../Title/Title";
+import SimpleButton from "../Button/SimpleButton";
 
 export default function SecondaryCard ({nombreRutina="Rutina", descripcion="Descripcion de la rutina"}) {
     return (

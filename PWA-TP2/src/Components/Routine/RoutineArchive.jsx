@@ -1,4 +1,4 @@
-import SecondaryCard from "./SecondaryCard";
+import SecondaryCard from "../Card/SecondaryCard";
 
 export default function RoutineArchive ({rutinas = []}) {
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
-import { setLocalStorage } from '../services/localStorage';
+import { setLocalStorage } from '../../services/localStorage';
 
 export const LanguageSwitcher = () => {
     const { i18n } = useTranslation();
