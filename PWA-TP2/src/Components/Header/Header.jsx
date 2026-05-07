@@ -1,6 +1,6 @@
 import { Bell, User } from 'lucide-react';
-import { LanguageSwitcher } from '../LanguageSwitcher'
-import SimpleButton from '../SimpleButton';
+import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher'
+import SimpleButton from '../Button/SimpleButton';
 import { Routes } from "../../const/routes";
 import { House } from 'lucide-react';
 import React from "react";

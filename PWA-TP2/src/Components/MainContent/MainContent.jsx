@@ -1,8 +1,8 @@
-import Title from "./Title";
-import MainCard from "./MainCard";
-import RoutineArchive from "./RoutineArchive";
+import Title from "../Title/Title";
+import MainCard from "../Card/MainCard";
+import RoutineArchive from "../Routine/RoutineArchive";
 import { useState } from "react";
-import EmptyStateCard from "./EmptyStateCard";
+import EmptyStateCard from "../Card/EmptyStateCard";
 
 export default function MainContent ({className}) {
     const [rutinaActivaId, setRutinaActiva] = useState(() => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useSearchParams } from "react-router";
 import Footer from "../../Components/Footer/Footer";
-import MainContent from "../../Components/MainContent";
+import MainContent from "../../Components/MainContent/MainContent";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Header from "../../Components/Header/Header";
 import ExerciseGallery from "../../Components/CatalogFilter/CatalogFilter";

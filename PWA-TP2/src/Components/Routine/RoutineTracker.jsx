@@ -1,4 +1,4 @@
-import { getCurrentWeekDates } from "../utils/getDateUtils";
+import { getCurrentWeekDates } from "../../utils/getDateUtils";
 import { useState } from "react";
 import { Check, CircleDot, Bed, Dumbbell} from "lucide-react";
 
