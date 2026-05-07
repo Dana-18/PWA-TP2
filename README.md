@@ -1,4 +1,6 @@
 <h1>Programacion Web Avanzada 2026</h1>
+<div><img width="544" height="334" alt="image" src="https://github.com/user-attachments/assets/a44f0a29-159e-47be-84d8-2113b0b09a76" />
+</div>
 <h3>Grupo Dunder Mifflin </h3>
 <h3>Integrantes: </h3>
 <ul>
