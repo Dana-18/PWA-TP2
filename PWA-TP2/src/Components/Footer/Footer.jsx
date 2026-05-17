@@ -1,12 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 export default function Footer({
-    groupName = "Dunder Mifflin",
-    participants = [
-        { id: 1, name: "Dana Garcia", icon: "👤", code: "P1" },
-        { id: 2, name: "Tomas Mengon", icon: "👤", code: "P2" },
-        { id: 3, name: "Jeremias Herrera", icon: "👤", code: "P3" }
-    ]
+    groupName = "Dunder Mifflin"
 }) {
 
     const { t } = useTranslation();
