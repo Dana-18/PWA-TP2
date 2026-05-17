@@ -58,6 +58,10 @@
   <li>
     <strong>src/locales</strong> Archivos que contienen la informacion necesaria para poder traduccir la pagina
   </li>
+  <li>
+    <strong>src/services</strong> Archivo que contiene funciones de localstorage las cuales son reutilizadas de ahi
+  </li>
+</ul>
 
 <h3>Visualización del proyecto: </h3>
 <img width="1563" height="629" alt="image" src="https://github.com/user-attachments/assets/af6fdfa7-7576-41f1-bcec-022e6ec2bffb" />
@@ -66,9 +70,3 @@
 <img width="1565" height="631" alt="image" src="https://github.com/user-attachments/assets/38cf8947-9c0f-4f07-be8d-80f69577c81e" />
 <img width="1562" height="632" alt="image" src="https://github.com/user-attachments/assets/98dd64bf-5a1c-4db0-829b-efb93a719e8d" />
 <img width="1562" height="633" alt="image" src="https://github.com/user-attachments/assets/435a933a-ca96-4f0a-bd41-6e54745ced71" />
-
-  
-  <li>
-    <strong>src/services</strong> Archivo que contiene funciones de localstorage las cuales son reutilizadas de ahi
-  </li>
-</ul>
