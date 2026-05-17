@@ -29,7 +29,7 @@
     <pre><code>npm run dev</code></pre>
   </li>
   <li>
-    <strong>Para poder visualizar los test iniciá el entorno local de Vite para verlos. strong> 
+    <strong>Para poder visualizar los test <strong> 
     <pre><code>npm run test</code></pre>
   </li>
   <li>
