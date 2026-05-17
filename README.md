@@ -29,6 +29,10 @@
     <pre><code>npm run dev</code></pre>
   </li>
   <li>
+    <strong>Para poder visualizar los test iniciá el entorno local de Vite para verlos. strong> 
+    <pre><code>npm run test</code></pre>
+  </li>
+  <li>
     <strong>Visualizar la aplicación:</strong> Abrí tu navegador web e ingresá a la ruta indicada en la terminal (usualmente <code>http://localhost:5173</code>).
   </li>
 </ol>
@@ -54,6 +58,16 @@
   <li>
     <strong>src/locales</strong> Archivos que contienen la informacion necesaria para poder traduccir la pagina
   </li>
+
+<h3>Visualización del proyecto: </h3>
+<img width="1563" height="629" alt="image" src="https://github.com/user-attachments/assets/af6fdfa7-7576-41f1-bcec-022e6ec2bffb" />
+<img width="1566" height="630" alt="image" src="https://github.com/user-attachments/assets/73687b12-27c1-41e5-8a26-e90e4173c5cf" />
+<img width="1566" height="635" alt="image" src="https://github.com/user-attachments/assets/bc51d065-2104-4f92-b905-5639c40b5ace" />
+<img width="1565" height="631" alt="image" src="https://github.com/user-attachments/assets/38cf8947-9c0f-4f07-be8d-80f69577c81e" />
+<img width="1562" height="632" alt="image" src="https://github.com/user-attachments/assets/98dd64bf-5a1c-4db0-829b-efb93a719e8d" />
+<img width="1562" height="633" alt="image" src="https://github.com/user-attachments/assets/435a933a-ca96-4f0a-bd41-6e54745ced71" />
+
+  
   <li>
     <strong>src/services</strong> Archivo que contiene funciones de localstorage las cuales son reutilizadas de ahi
   </li>
