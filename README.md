@@ -64,9 +64,9 @@
 </ul>
 
 <h3>Visualización del proyecto: </h3>
-<img width="1563" height="629" alt="image" src="https://github.com/user-attachments/assets/af6fdfa7-7576-41f1-bcec-022e6ec2bffb" />
-<img width="1566" height="630" alt="image" src="https://github.com/user-attachments/assets/73687b12-27c1-41e5-8a26-e90e4173c5cf" />
-<img width="1566" height="635" alt="image" src="https://github.com/user-attachments/assets/bc51d065-2104-4f92-b905-5639c40b5ace" />
-<img width="1565" height="631" alt="image" src="https://github.com/user-attachments/assets/38cf8947-9c0f-4f07-be8d-80f69577c81e" />
-<img width="1562" height="632" alt="image" src="https://github.com/user-attachments/assets/98dd64bf-5a1c-4db0-829b-efb93a719e8d" />
-<img width="1562" height="633" alt="image" src="https://github.com/user-attachments/assets/435a933a-ca96-4f0a-bd41-6e54745ced71" />
+<img width="1563" height="729" alt="image" src="https://github.com/user-attachments/assets/af6fdfa7-7576-41f1-bcec-022e6ec2bffb" />
+<img width="1566" height="730" alt="image" src="https://github.com/user-attachments/assets/73687b12-27c1-41e5-8a26-e90e4173c5cf" />
+<img width="1566" height="735" alt="image" src="https://github.com/user-attachments/assets/bc51d065-2104-4f92-b905-5639c40b5ace" />
+<img width="1565" height="731" alt="image" src="https://github.com/user-attachments/assets/38cf8947-9c0f-4f07-be8d-80f69577c81e" />
+<img width="1562" height="732" alt="image" src="https://github.com/user-attachments/assets/98dd64bf-5a1c-4db0-829b-efb93a719e8d" />
+<img width="1562" height="733" alt="image" src="https://github.com/user-attachments/assets/435a933a-ca96-4f0a-bd41-6e54745ced71" />
