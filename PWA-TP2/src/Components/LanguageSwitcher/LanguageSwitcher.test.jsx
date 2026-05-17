@@ -10,6 +10,7 @@ vi.mock("react-i18next", () => ({
         i18n: {
             changeLanguage: changeLanguageMock,
             language: "es",
+            
         },
     }),
 }));
@@ -25,11 +26,19 @@ describe("LanguageSwitcher component", () => {
         expect(screen.getByText("EN")).toBeInTheDocument();
     });
 
-    it("should call to changeLanguage with 'en' when click the button EN", () => {
+    it("should call to changeLanguage when user click the button", () => {
         render(<LanguageSwitcher />);
         const enButton = screen.getByText("EN");
+        const esButton = screen.getByText("ES");
         fireEvent.click(enButton);
+        fireEvent.click(esButton);
+        expect(changeLanguageMock).toHaveBeenCalledWith("en");
+        expect(changeLanguageMock).toHaveBeenCalledWith("es")
     });
 
-    it("should have class green background active with the actual language (ES)")
-})
+    it("should have class green background active with the actual language (ES)", () => {
+        render(<LanguageSwitcher/>);
+        const esButton = screen.getByText("ES");
+        expect(esButton).toHaveClass("bg-teal-600");
+    });
+});
