@@ -30,6 +30,9 @@
   </li>
   <li>
     <strong>Para poder visualizar los test <strong> 
+      <h3>Se usaron las siguientes librerias:</h3>
+      <p>Vitest</p>
+      <p>testing library/react</p>
     <pre><code>npm run test</code></pre>
   </li>
   <li>
