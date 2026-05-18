@@ -1,9 +1,28 @@
-// Objetivo: Verificar que el componente MainContent renderiza correctamente según si hay rutina activa o no
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import MainContent from "./MainContent";
 
-// Mockeamos los componentes que dependen de contexto para evitar errores
+// ✅ MOCKEAR LOCALSTORAGE AQUÍ
+beforeEach(() => {
+  const store = {};
+  
+  globalThis.localStorage = {
+    getItem: (key) => store[key] || null,
+    setItem: (key, value) => {
+      store[key] = value.toString();
+    },
+    removeItem: (key) => {
+      delete store[key];
+    },
+    clear: () => {
+      Object.keys(store).forEach(key => delete store[key]);
+    },
+  };
+  
+  vi.clearAllMocks();
+});
+
+// Mockeamos los componentes que dependen de contexto
 vi.mock("react-router", () => ({
   useNavigate: () => vi.fn(),
 }));
@@ -15,7 +34,6 @@ vi.mock("react-i18next", () => ({
   }),
 }));
 
-// Mockeamos los componentes hijos para evitar errores de dependencias
 vi.mock("../Card/MainCard", () => ({
   default: () => <div data-testid="main-card">Main Card</div>,
 }));
@@ -29,13 +47,9 @@ vi.mock("../Card/EmptyStateCard", () => ({
 }));
 
 describe("MainContent component", () => {
-  beforeEach(() => {
-    localStorage.clear();
-    vi.clearAllMocks();
-  });
-
   afterEach(() => {
-    localStorage.clear();
+    // Ya no necesitas localStorage.clear() aquí si lo hiciste en beforeEach
+    vi.clearAllMocks();
   });
 
   it("should render EmptyStateCard when there is no active routine", () => {
@@ -45,6 +59,9 @@ describe("MainContent component", () => {
     expect(main).toBeInTheDocument();
     expect(main).toHaveClass("bg-white");
   });
+
+  // ... resto de tests igual
+});
 
   it("should render main content when there is an active routine", () => {
     const activeRoutine = { id: 1 };
@@ -102,4 +119,3 @@ describe("MainContent component", () => {
     expect(screen.getByText("Mis Rutinas")).toBeInTheDocument();
     expect(screen.getByTestId("main-card")).toBeInTheDocument();
   });
-});
