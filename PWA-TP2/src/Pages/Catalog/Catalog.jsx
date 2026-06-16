@@ -20,13 +20,14 @@ export default function Catalog() {
   const obtenerDatos =  useCallback (async (pageNum = 0) => {
     // Freno de mano: Evita peticiones duplicadas si ya está cargando o si ya procesamos esa página
     if (loading || !hasMore || (pageNum > 0 && pageNum <= page)) return;
-    
+
     setLoading(true);
     try {
-      const limit = 10;
-      
-      // URL de tu API en Express alojada en Vercel
-      const response = await fetch(`https://tp-express.vercel.app/api/exercises?lang=${i18n.language}`);
+      const increment = 5; // cargamos de 5 en 5
+      const requestedLimit = (pageNum + 1) * increment; // 5, 10, 15...
+
+      // URL de tu API en Express alojada en Vercel con parámetro limit
+      const response = await fetch(`https://tp-express.vercel.app/api/exercises?lang=${i18n.language}&limit=${requestedLimit}`);
       let datosRecibidos = await response.json();
       
       console.log("Datos recibidos página", pageNum, ":", datosRecibidos);
@@ -36,32 +37,35 @@ export default function Catalog() {
         datosRecibidos = datosRecibidos.exercises;
       }
 
-      // Si no es un array válido o viene completamente vacío, cerramos el scroll
+      // Si no es un array válido o viene vacío, cerramos el scroll
       if (!Array.isArray(datosRecibidos) || datosRecibidos.length === 0) {
         setHasMore(false);
         setLoading(false);
         return;
       }
-      
-      // Si llegaron menos elementos que el límite, significa que es la última página
-      if (datosRecibidos.length < limit) {
+
+      // Si la API devolvió menos elementos que lo solicitado, no hay más para cargar
+      if (datosRecibidos.length < requestedLimit) {
         setHasMore(false);
       }
-      
+
       if (pageNum === 0) {
-        setDatos(datosRecibidos);
+        // Primer lote
+        setDatos(datosRecibidos.slice(0, requestedLimit));
       } else {
         setDatos(prev => {
-          // Filtramos usando un Set con los IDs existentes para asegurar que no se dupliquen en pantalla
-          const IDsExistentes = new Set(prev.map(item => item.id || item._id));
-          const nuevosFiltrados = datosRecibidos.filter(item => !IDsExistentes.has(item.id || item._id));
-          
-          // Si la API nos mandó datos pero todos están repetidos, apagamos el "hasMore"
-          if (nuevosFiltrados.length === 0) {
+          const prevLen = prev.length;
+          // Tomamos sólo la porción siguiente hasta requestedLimit (máx increment elementos)
+          const siguientes = Array.isArray(datosRecibidos)
+            ? datosRecibidos.slice(prevLen, requestedLimit)
+            : [];
+
+          if (!siguientes || siguientes.length === 0) {
             setHasMore(false);
+            return prev;
           }
-          
-          return [...prev, ...nuevosFiltrados];
+
+          return [...prev, ...siguientes];
         });
       }
       
