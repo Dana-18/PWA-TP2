@@ -12,9 +12,46 @@ export default function SelectExercises() {
     const [ejercicios, setEjercicios] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState("Todos");
-    const { t } = useTranslation();
+    const [selectedCategory, setSelectedCategory] = useState("All");
+    const { t,i18n } = useTranslation();
     
+    // Categorías base en inglés (identificadores consistentes)
+    const categoriesBase = ['All', 'Chest', 'Back', 'Shoulders', 'Legs', 'Biceps', 'Triceps'];
+    
+    // Función para obtener la traducción de una categoría
+    const getCategoriaNombre = (categoria) => {
+        const isSpanish = i18n.language.startsWith('es');
+        const traducciones = {
+            'All': isSpanish ? 'Todos' : 'All',
+            'Chest': isSpanish ? 'Pecho' : 'Chest',
+            'Back': isSpanish ? 'Espalda' : 'Back',
+            'Shoulders': isSpanish ? 'Hombros' : 'Shoulders',
+            'Legs': isSpanish ? 'Piernas' : 'Legs',
+            'Biceps': isSpanish ? 'Biceps' : 'Biceps',
+            'Triceps': isSpanish ? 'Triceps' : 'Triceps'
+        };
+        return traducciones[categoria] || categoria;
+    };
+
+    // Normalizar grupo muscular a inglés para guardar
+    const normalizeMuscleGroup = (muscleGroup) => {
+        const cleaned = muscleGroup?.trim() || '';
+        const normalizacion = {
+            'Todos': 'All',
+            'Pecho': 'Chest',
+            'Espalda': 'Back',
+            'Hombros': 'Shoulders',
+            'Piernas': 'Legs',
+            'Biceps': 'Biceps',
+            'Triceps': 'Triceps',
+            'All': 'All',
+            'Chest': 'Chest',
+            'Back': 'Back',
+            'Shoulders': 'Shoulders',
+            'Legs': 'Legs'
+        };
+        return normalizacion[cleaned] || cleaned;
+    };
     
     const [routineData, setRoutineData] = useState(() => {
         const routines = localStorage.getItem("routines");
@@ -46,13 +83,12 @@ export default function SelectExercises() {
         return {};
     });
 
-    const categories = ["Todos", "Pecho", "Espalda", "Hombros", "Piernas", "Biceps", "Triceps"];
-
     // Cargar ejercicios
     useEffect(() => {
         const loadExercises = async () => {
+            setLoading(true);
             try {
-                const response = await fetch("https://69e6e0ca68208c1debe8004e.mockapi.io/api/v1/ejercicios?limit=1000&page=1");
+                const response = await fetch(`https://tp-express.vercel.app/api/exercises?lang=${i18n.language}&limit=1000`);
                 const data = await response.json();
                 setEjercicios(data);
             } catch (error) {
@@ -62,7 +98,15 @@ export default function SelectExercises() {
             }
         };
         loadExercises();
-    }, []);
+    }, [i18n.language]);
+
+    // Resetear a 'All' cuando cambia el idioma
+    useEffect(() => {
+        setSelectedCategory('All');
+    }, [i18n.language]);
+
+    // Re-renderizar ejercicios guardados cuando cambia idioma
+    const languageKey = i18n.language;
 
     // Inicializar estructura de días si no existe
     useEffect(() => {
@@ -78,9 +122,20 @@ export default function SelectExercises() {
     const currentDay = currentDayIndex || routineData.days?.[1];
 
 
+    // Obtener ejercicio actual por ID (con datos en idioma correcto)
+    const getExerciseById = (id) => {
+        return ejercicios.find(ex => ex.id === id);
+    };
+
+    const getValorFiltro = (categoria) => {
+        if (categoria === 'All') return 'All';
+        return getCategoriaNombre(categoria);
+    };
+
+    const valorFiltroActivo = getValorFiltro(selectedCategory);
     const filteredExercises = ejercicios.filter((ex) => {
         const matchesSearch = ex.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = selectedCategory === "Todos" || ex.muscular_group === selectedCategory;
+        const matchesCategory = selectedCategory === 'All' || ex.muscleGroup === valorFiltroActivo;
         return matchesSearch && matchesCategory;
     });
 
@@ -90,8 +145,6 @@ export default function SelectExercises() {
         const newExercises = [...(routineExercises[currentDay] || [])];
         newExercises.push({
             id: exercise.id,
-            name: exercise.name,
-            muscular_group: exercise.muscular_group,
             sets: 3,
             reps: 10,
         });
@@ -161,19 +214,22 @@ export default function SelectExercises() {
 
                             {/* Categories */}
                             <div className="flex flex-wrap gap-2 mb-6">
-                                {categories.map((cat) => (
-                                    <button
-                                        key={cat}
-                                        onClick={() => setSelectedCategory(cat)}
-                                        className={`px-3 py-1 text-sm rounded-full transition-colors ${
-                                            selectedCategory === cat
-                                                ? "bg-emerald-500 text-white"
-                                                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                                        }`}
-                                    >
-                                        {cat}
-                                    </button>
-                                ))}
+                                {categoriesBase.map((cat) => {
+                                    const label = getCategoriaNombre(cat);
+                                    return (
+                                        <button
+                                            key={cat}
+                                            onClick={() => setSelectedCategory(cat)}
+                                            className={`px-3 py-1 text-sm rounded-full transition-colors ${
+                                                selectedCategory === cat
+                                                    ? "bg-emerald-500 text-white"
+                                                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                                            }`}
+                                        >
+                                            {label}
+                                        </button>
+                                    );
+                                })}
                             </div>
 
                             {/* Exercises List */}
@@ -193,7 +249,7 @@ export default function SelectExercises() {
                                                     <p className="font-medium text-sm text-gray-900 truncate">
                                                         {exercise.name}
                                                     </p>
-                                                    <p className="text-xs text-gray-600">{exercise.muscular_group}</p>
+                                                    <p className="text-xs text-gray-600">{exercise.muscleGroup}</p>
                                                 </div>
                                                 <button
                                                     onClick={() => addExerciseToDay(exercise)}
@@ -230,90 +286,93 @@ export default function SelectExercises() {
                             </div>
 
                             {/* Exercises for Current Day */}
-                            <div className="flex-1 overflow-y-auto mb-6">
+                            <div className="flex-1 overflow-y-auto mb-6" key={`day-${currentDay}-${i18n.language}`}>
                                 {routineExercises[currentDay]?.length === 0 ? (
                                     <div className="flex items-center justify-center h-64 text-gray-500">
                                         <p>{t("createRoutine2.description")}</p>
                                     </div>
                                 ) : (
                                     <div className="space-y-4">
-                                        {routineExercises[currentDay]?.map((exercise, index) => (
-                                            <div
-                                                key={index}
-                                                className="bg-white rounded-lg p-4 shadow-sm border border-gray-200"
-                                            >
-                                                <div className="flex items-start justify-between mb-4">
-                                                    <div>
-                                                        <h3 className="font-semibold text-gray-900">{exercise.name}</h3>
-                                                        <p className="text-sm text-gray-600">{exercise.muscular_group}</p>
-                                                    </div>
-                                                    <button
-                                                        onClick={() => removeExerciseFromDay(index)}
-                                                        className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                                                    >
-                                                        <Trash2 className="w-4 h-4" />
-                                                    </button>
-                                                </div>
-
-                                                <div className="grid grid-cols-2 gap-4">
-                                                    <div>
-                                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                                            {t("createRoutine2.sets")}
-                                                        </label>
-                                                        <div className="flex items-center gap-2">
-                                                            <button
-                                                                onClick={() =>
-                                                                    updateExercise(index, "sets", Math.max(1, exercise.sets - 1))
-                                                                }
-                                                                className="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded"
-                                                            >
-                                                                −
-                                                            </button>
-                                                            <input
-                                                                type="number"
-                                                                value={exercise.sets}
-                                                                onChange={(e) => updateExercise(index, "sets", e.target.value)}
-                                                                className="w-12 text-center border border-gray-300 rounded py-1"
-                                                            />
-                                                            <button
-                                                                onClick={() => updateExercise(index, "sets", exercise.sets + 1)}
-                                                                className="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded"
-                                                            >
-                                                                +
-                                                            </button>
+                                        {routineExercises[currentDay]?.map((exercise, index) => {
+                                            const currentExercise = getExerciseById(exercise.id);
+                                            return (
+                                                <div
+                                                    key={index}
+                                                    className="bg-white rounded-lg p-4 shadow-sm border border-gray-200"
+                                                >
+                                                    <div className="flex items-start justify-between mb-4">
+                                                        <div>
+                                                            <h3 className="font-semibold text-gray-900">{currentExercise?.name || 'Ejercicio no encontrado'}</h3>
+                                                            <p className="text-sm text-gray-600">{getCategoriaNombre(currentExercise?.muscleGroup)}</p>
                                                         </div>
+                                                        <button
+                                                            onClick={() => removeExerciseFromDay(index)}
+                                                            className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                                        >
+                                                            <Trash2 className="w-4 h-4" />
+                                                        </button>
                                                     </div>
 
-                                                    <div>
-                                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                                            {t("createRoutine2.reps")}
-                                                        </label>
-                                                        <div className="flex items-center gap-2">
-                                                            <button
-                                                                onClick={() =>
-                                                                    updateExercise(index, "reps", Math.max(1, exercise.reps - 1))
-                                                                }
-                                                                className="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded"
-                                                            >
-                                                                −
-                                                            </button>
-                                                            <input
-                                                                type="number"
-                                                                value={exercise.reps}
-                                                                onChange={(e) => updateExercise(index, "reps", e.target.value)}
-                                                                className="w-12 text-center border border-gray-300 rounded py-1"
-                                                            />
-                                                            <button
-                                                                onClick={() => updateExercise(index, "reps", exercise.reps + 1)}
-                                                                className="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded"
-                                                            >
-                                                                +
-                                                            </button>
+                                                    <div className="grid grid-cols-2 gap-4">
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                                                {t("createRoutine2.sets")}
+                                                            </label>
+                                                            <div className="flex items-center gap-2">
+                                                                <button
+                                                                    onClick={() =>
+                                                                        updateExercise(index, "sets", Math.max(1, exercise.sets - 1))
+                                                                    }
+                                                                    className="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded"
+                                                                >
+                                                                    −
+                                                                </button>
+                                                                <input
+                                                                    type="number"
+                                                                    value={exercise.sets}
+                                                                    onChange={(e) => updateExercise(index, "sets", e.target.value)}
+                                                                    className="w-12 text-center border border-gray-300 rounded py-1"
+                                                                />
+                                                                <button
+                                                                    onClick={() => updateExercise(index, "sets", exercise.sets + 1)}
+                                                                    className="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded"
+                                                                >
+                                                                    +
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                                                {t("createRoutine2.reps")}
+                                                            </label>
+                                                            <div className="flex items-center gap-2">
+                                                                <button
+                                                                    onClick={() =>
+                                                                        updateExercise(index, "reps", Math.max(1, exercise.reps - 1))
+                                                                    }
+                                                                    className="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded"
+                                                                >
+                                                                    −
+                                                                </button>
+                                                                <input
+                                                                    type="number"
+                                                                    value={exercise.reps}
+                                                                    onChange={(e) => updateExercise(index, "reps", e.target.value)}
+                                                                    className="w-12 text-center border border-gray-300 rounded py-1"
+                                                                />
+                                                                <button
+                                                                    onClick={() => updateExercise(index, "reps", exercise.reps + 1)}
+                                                                    className="px-2 py-1 text-gray-600 hover:bg-gray-100 rounded"
+                                                                >
+                                                                    +
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            );
+                                        })}
                                     </div>
                                 )}
                             </div>

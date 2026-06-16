@@ -10,7 +10,7 @@ const CardItem = ({ item, onAction }) => {
     const { favorites, toggleFavorite } = useFavorites();
     const navigate = useNavigate();
     
-     const { id, name, description, image, difficulty, muscular_group } = item;
+     const { id, name, description, image, difficulty, muscleGroup} = item;
 
      const isFavorite = favorites.includes(id);
 
@@ -50,7 +50,7 @@ const CardItem = ({ item, onAction }) => {
                 </div>
 
                 <p className="text-sm font-bold text-gray-400 mb-2 truncate">
-                    {muscular_group}
+                    {muscleGroup}
                 </p>
 
                 <p className="mb-3 font-normal text-gray-700 line-clamp-3 text-sm">

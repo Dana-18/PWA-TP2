@@ -10,7 +10,7 @@ const DetailsCard = ({ exercise }) => {
         return <div className="p-8 text-center">No exercise data available</div>;
     }
 
-    const { name, description, image, muscular_group, difficulty, video, details = {} } = exercise;
+    const {name, description, image, muscleGroup, difficulty, video, targetIntensity, equipment, breathing, technique} = exercise;
 
     return (
         <>
@@ -21,7 +21,7 @@ const DetailsCard = ({ exercise }) => {
                     <div className="flex-1">
                         <div className="flex flex-wrap gap-2 mb-3">
                             <span className="px-3 py-1 bg-[#E8F3F0] text-[#4A7C6D] text-[10px] sm:text-xs font-bold rounded-full uppercase tracking-wider">
-                                {muscular_group}
+                                {muscleGroup}
                             </span>
                             <span className="px-3 py-1 bg-[#F0F0F0] text-[#707070] text-[10px] sm:text-xs font-bold rounded-full uppercase tracking-wider">
                                 {t("detailsPage.level")} {difficulty}
@@ -95,7 +95,7 @@ const DetailsCard = ({ exercise }) => {
                             <div className="space-y-4 text-gray-600 leading-relaxed text-sm md:text-base">
                                 <p>{description}</p>
                                 <p className="border-l-4 border-[#005F41]/20 pl-4 italic">
-                                    "{details?.technique_masterclass || 'No technique details available'}"
+                                    "{technique || 'No technique details available'}"
                                 </p>
                             </div>
                         </section>
@@ -106,7 +106,7 @@ const DetailsCard = ({ exercise }) => {
                                     <Wind size={18} /> {t("detailsPage.breathing")}
                                 </div>
                                 <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-                                    {details?.breathing || 'No breathing instructions available'}
+                                    {breathing || 'No breathing instructions available'}
                                 </p>
                             </div>
                         </div>
@@ -118,9 +118,9 @@ const DetailsCard = ({ exercise }) => {
                             <h3 className="text-lg font-bold mb-6">{t("detailsPage.metrics.title")}</h3>
                             <div className="space-y-4">
                                 {[
-                                    { label: t("detailsPage.metrics.primary"), value: muscular_group, color: 'text-[#4A7C6D]' },
-                                    { label: t("detailsPage.metrics.target"), value: details?.target_intensity || 'N/A' },
-                                    { label: t("detailsPage.metrics.equipment"), value: details?.equipment }
+                                    { label: t("detailsPage.metrics.primary"), value: muscleGroup, color: 'text-[#4A7C6D]' },
+                                    { label: t("detailsPage.metrics.target"), value: targetIntensity || 'N/A' },
+                                    { label: t("detailsPage.metrics.equipment"), value: equipment }
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex justify-between items-center border-b border-gray-50 pb-3 text-xs md:text-sm">
                                         <span className="text-gray-400 font-medium">{item.label}</span>
