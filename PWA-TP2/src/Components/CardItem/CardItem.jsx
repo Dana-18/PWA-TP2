@@ -39,6 +39,7 @@ const CardItem = ({ item, onAction, isFavorite: isFavoriteProp, onToggleFavorite
                 className="w-full h-48 object-cover"
                 src={image || "https://via.placeholder.com/400x200"}
                 alt={name}
+                loading="lazy"
             />
             <div className="p-5  border border-gray-200 shadow-sm ">
                 <span className={`text-xs font-semibold px-2.5 py-0.5 rounded ${getDifficultyColor(difficulty)}`}>

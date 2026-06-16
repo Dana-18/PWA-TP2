@@ -32,23 +32,24 @@ export const useFavorites = () => {
 
         try {
             if (isFavorite) {
-                // DELETE /api/favorites?exerciseId=15&userId=miUsuario
                 const deleteUrl = new URL(API_FAVORITES_URL);
                 deleteUrl.searchParams.append('exerciseId', exerciseId);
                 deleteUrl.searchParams.append('userId', CURRENT_USER_ID);
-                
+
                 const response = await fetch(deleteUrl.toString(), {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
                     },
                 });
-                
+
                 if (response.ok) {
                     setfavorites((previous) => previous.filter((favId) => favId !== exerciseId));
+                    return { success: true, message: "Favorito eliminado" };
                 }
+                const errText = await response.text().catch(() => null);
+                return { success: false, message: errText || "Error eliminando favorito" };
             } else {
-                // POST /api/favorites con todos los datos del exercise
                 const response = await fetch(API_FAVORITES_URL, {
                     method: "POST",
                     headers: {
@@ -57,16 +58,20 @@ export const useFavorites = () => {
                     body: JSON.stringify({
                         userId: CURRENT_USER_ID,
                         exerciseId: exerciseId,
-                        exercise: exercise, // Enviar todos los datos del exercise
+                        exercise: exercise,
                     }),
                 });
-                
+
                 if (response.ok) {
                     setfavorites((previous) => [...previous, exerciseId]);
+                    return { success: true, message: "Favorito agregado" };
                 }
+                const errText = await response.text().catch(() => null);
+                return { success: false, message: errText || "Error agregando favorito" };
             }
         } catch (error) {
             console.error("Error toggling favorite on backend:", error);
+            return { success: false, message: error?.message || "Error de red al actualizar favorito" };
         }
     };
 
