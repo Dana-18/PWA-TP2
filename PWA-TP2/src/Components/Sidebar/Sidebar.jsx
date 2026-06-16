@@ -8,7 +8,7 @@ export default function Sidebar() {
     const { t } = useTranslation();
     return (
         <>
-            <aside id="sidebar" role="navigation" className={`fixed inset-y-0 left-0 z-60 w-72 bg-slate-50 border-none transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:static md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-200`}>
+            <aside id="sidebar" role="navigation" className={`fixed inset-y-0 left-0 z-60 w-72 bg-slate-50 border-none transition-transform duration-300 ease-in-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:sticky md:top-0 md:h-screen md:translate-x-0 md:left-0 md:right-auto md:shadow-none md:w-full md:border-r md:border-l-0 md:bg-slate-200 md:overflow-y-auto`}>
                 <div className="flex h-full bg-black flex-col justify-between relative">
                     <div>
                         <div className="flex items-center justify-between border-b border-gray-200 p-6 md:border-b-0 md:bg-black">

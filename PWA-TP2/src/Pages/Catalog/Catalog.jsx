@@ -4,6 +4,7 @@ import MainContent from "../../Components/MainContent/MainContent";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Header from "../../Components/Header/Header";
 import ExerciseGallery from "../../Components/CatalogFilter/CatalogFilter";
+import Spinner from "../../Components/Spinner/Spinner";
 import { useEffect, useState, useCallback} from "react";
 import { useTranslation } from "react-i18next";
 
@@ -107,18 +108,17 @@ export default function Catalog() {
                className="w-full px-4 py-2 rounded border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-300"
              />
            </div>
-           {searchTerm && datos.length === 0 && (
-             <div className="text-center text-gray-600 mb-4">Cargando ejercicios...</div>
-           )}
            {searchTerm && datos.length > 0 && (
              <div className="text-sm text-gray-600 mb-4">Resultados para "{searchTerm}"</div>
            )}
             {(() => {
               const term = searchTerm.trim().toLowerCase();
+              console.log("Datos" + datos);
               const filtered = term ? datos.filter(d => (d.name || '').toLowerCase().includes(term)) : datos;
+              console.log("Filtrados" + filtered);
               return (
                 <>
-                  <ExerciseGallery datos={filtered} />
+                  <ExerciseGallery datos={filtered} searchTerm={searchTerm} />
                   {term && filtered.length === 0 && (
                     <div className="flex justify-center mt-8">
                       <p className="text-gray-600">No se encontraron ejercicios.</p>
@@ -127,14 +127,22 @@ export default function Catalog() {
                 </>
               );
             })()}
-            {loading && (
-              <div className="flex justify-center mt-8">
-                <p className="text-gray-600">Cargando más items...</p>
-              </div>
-            )}
-            {!hasMore && datos.length > 0 && (
-              <div className="flex justify-center mt-8">
-                <p className="text-gray-600">No hay más items para mostrar</p>
+            {!searchTerm && datos.length === 0 && loading && (
+             <div className="flex flex-col items-center justify-center mt-8">
+               <Spinner size="lg" />
+               <p className="text-gray-600 mt-4">Cargando ejercicios...</p>
+             </div>
+           )}
+           {searchTerm && datos.length === 0 && loading && (
+             <div className="text-center mb-4">
+               <Spinner size="md" />
+               <p className="text-gray-600 mt-2">Buscando ejercicios...</p>
+             </div>
+           )}
+            {loading && datos.length > 0 && (
+              <div className="flex flex-col items-center justify-center mt-8 mb-8">
+                <Spinner size="md" />
+                <p className="text-gray-600 mt-2">Cargando más items...</p>
               </div>
             )}
          </div>
