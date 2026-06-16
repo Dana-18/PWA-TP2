@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CardItem from "../CardItem/CardItem";
 import { useTranslation } from 'react-i18next';
 
-const ExerciseGallery = ({datos}) => {
+const ExerciseGallery = ({datos, searchTerm = ""}) => {
 
     const {i18n} = useTranslation();
     const [categoriaActiva, setCategoriaActiva] = useState('All');
@@ -68,12 +68,19 @@ const ExerciseGallery = ({datos}) => {
     // Usar datosCompletos si tenemos datos, sino usar datos del padre (para "All")
     const datosAMostrar = datosCompletos.length > 0 ? datosCompletos : datos;
     const valorFiltroActivo = getValorFiltro(categoriaActiva);
-    const datosFiltrados = categoriaActiva === 'All' 
+    
+    // Filtrar por categoría y searchTerm
+    let datosFiltrados = categoriaActiva === 'All' 
         ? datosAMostrar 
-        : datosCompletos.filter(item => {
-            console.log("Filtrando item:", item, "por categoria:", categoriaActiva, "valor filtro:", valorFiltroActivo, "muscleGroup:", item.muscleGroup);
-            return item.muscleGroup === valorFiltroActivo;
-          });
+        : datosCompletos.filter(item => item.muscleGroup === valorFiltroActivo);
+    
+    // Aplicar filtro de búsqueda
+    if (searchTerm.trim()) {
+        const termino = searchTerm.trim().toLowerCase();
+        datosFiltrados = datosFiltrados.filter(item => 
+            (item.name || '').toLowerCase().includes(termino)
+        );
+    }
 
     return (
         <div className="w-full">
