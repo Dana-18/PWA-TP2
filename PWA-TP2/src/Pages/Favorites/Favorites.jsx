@@ -1,32 +1,60 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Header from "../../Components/Header/Header";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Footer from "../../Components/Footer/Footer";
 import CardItem from "../../Components/CardItem/CardItem";
 import { useFavorites } from "../../Hooks/UseFavorites"; 
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
 
 const FavoritesPage = () => {
     const [ allProducts, setfavoritesAllProducts ] = useState([]);
     const { favorites, toggleFavorite } = useFavorites();
-    const { t } = useTranslation();
-    const [misFavoritos, setMisFavoritos] = useState([]);
-
-    const cargarFavoritos = () => {
-    const saved = JSON.parse(localStorage.getItem('productFavorites') || "[]");
-    setMisFavoritos(saved);
-};
+    const { t, i18n } = useTranslation();
+    const [refreshKey, setRefreshKey] = useState(0);
 
     useEffect(() => {
-        fetch('https://69e6e0ca68208c1debe8004e.mockapi.io/api/v1/ejercicios')
-        .then(res => res.json())
-        .then(data => setfavoritesAllProducts(data));
-    }, []);
+        const loadFavorites = async () => {
+            try {
+                const response = await fetch('https://tp-express.vercel.app/api/favorites');
+                const data = await response.json();
+                if (!Array.isArray(data)) return;
 
-    const favoriteProducts = useMemo (() => {
-        return allProducts.filter(product => favorites.includes(product.id));
-    }, [allProducts, favorites]);
+                const normalized = data
+                    .filter((fav) => fav.userId === 'miUsuario')
+                    .map((fav) => {
+                        const exercise = fav.exercise || {};
+                        const translation = exercise.translations?.[i18n.language] || exercise.translations?.en || {};
+
+                        return {
+                            id: String(exercise.id ?? fav.exerciseId ?? fav.id ?? ""),
+                            name: translation.name || exercise.name || "",
+                            description: translation.description || translation.equipment || translation.technique || "",
+                            image: exercise.image || "",
+                            difficulty: Number(exercise.difficulty) || 1,
+                            muscleGroup: translation.muscleGroup || exercise.muscleGroup || "",
+                            video: exercise.video || "",
+                            targetIntensity: exercise.targetIntensity || "",
+                            equipment: translation.equipment || exercise.equipment || "",
+                            breathing: translation.breathing || "",
+                            technique: translation.technique || "",
+                        };
+                    });
+
+                setfavoritesAllProducts(normalized);
+            } catch (error) {
+                console.error("Error loading favorites:", error);
+            }
+        };
+
+        loadFavorites();
+    }, [i18n.language, refreshKey]);
+
+    const favoriteProducts = useMemo(() => allProducts, [allProducts]);
+
+    const handleFavoriteToggle = async (item) => {
+        await toggleFavorite(item);
+        setRefreshKey((prev) => prev + 1);
+    };
 
     return (
         <>
@@ -48,11 +76,9 @@ const FavoritesPage = () => {
                                 {favoriteProducts.map((item) => (
                                     <div key={item.id}>
                                         <CardItem 
-                                        key={item.id}
-                                        item={item}
-                                        onAction={() => toggleFavorite(item.id)}
+                                            item={item}
+                                            onAction={() => handleFavoriteToggle(item)}
                                         />
-                                        
                                     </div>
                                 ))}
                             </div>

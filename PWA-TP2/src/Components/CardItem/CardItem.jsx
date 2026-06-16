@@ -5,20 +5,22 @@ import { Heart } from "lucide-react";
 import { useFavorites } from '../../Hooks/UseFavorites';
 import { useTranslation } from 'react-i18next';
 
-const CardItem = ({ item, onAction }) => {
+const CardItem = ({ item, onAction, isFavorite: isFavoriteProp, onToggleFavorite }) => {
     const {t} = useTranslation();
     const { favorites, toggleFavorite } = useFavorites();
     const navigate = useNavigate();
     
-     const { id, name, description, image, difficulty, muscleGroup} = item;
+    const { id, name, description, image, difficulty, muscleGroup} = item;
 
-     const isFavorite = favorites.includes(id);
+    const isFavorite = isFavoriteProp !== undefined ? isFavoriteProp : favorites.includes(String(id));
 
     const handleFavoriteClick = () => {
-          if (onAction) {
+        if (onAction) {
             onAction();
+        } else if (onToggleFavorite) {
+            onToggleFavorite();
         } else {
-            toggleFavorite(id);
+            toggleFavorite(item);
         }
     };
 
