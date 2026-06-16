@@ -61,7 +61,10 @@ export const FavoritesProvider = ({ children }) => {
                     
                     if (response.ok) {
                         setFavorites((prev) => prev.filter((id) => id !== exerciseId));
+                        return { success: true, message: "Favorito eliminado" };
                     }
+                    const errText = await response.text().catch(() => null);
+                    return { success: false, message: errText || "Error eliminando favorito" };
                 } else {
                     // POST 
                     const response = await fetch(API_FAVORITES_URL, {
@@ -78,10 +81,14 @@ export const FavoritesProvider = ({ children }) => {
                     
                     if (response.ok) {
                         setFavorites((prev) => [...prev, exerciseId]);
+                        return { success: true, message: "Favorito agregado" };
                     }
+                    const errText = await response.text().catch(() => null);
+                    return { success: false, message: errText || "Error agregando favorito" };
                 }
             } catch (error) {
                 console.error("Error toggling favorite on backend:", error);
+                return { success: false, message: error?.message || "Error de red al actualizar favorito" };
             }
         },
         [favorites]

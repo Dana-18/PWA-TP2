@@ -13,6 +13,7 @@ export default function Catalog() {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [hasMore, setHasMore] = useState(true);
   const { t, i18n } = useTranslation();
 
@@ -67,6 +68,7 @@ export default function Catalog() {
       setPage(pageNum);
     } catch (error) {
       console.log("Error:", error);
+      setErrorMessage('Error cargando ejercicios');
     } finally {
       setLoading(false); 
     }
@@ -119,6 +121,11 @@ export default function Catalog() {
               return (
                 <>
                   <ExerciseGallery datos={filtered} searchTerm={searchTerm} />
+                      {errorMessage && (
+                        <div className="bg-red-100 text-red-800 p-3 rounded mb-4">
+                          {errorMessage}
+                        </div>
+                      )}
                   {term && filtered.length === 0 && (
                     <div className="flex justify-center mt-8">
                       <p className="text-gray-600">No se encontraron ejercicios.</p>
@@ -127,12 +134,17 @@ export default function Catalog() {
                 </>
               );
             })()}
-            {!searchTerm && datos.length === 0 && loading && (
+                {!searchTerm && datos.length === 0 && loading && (
              <div className="flex flex-col items-center justify-center mt-8">
                <Spinner size="lg" />
                <p className="text-gray-600 mt-4">Cargando ejercicios...</p>
              </div>
            )}
+                {!searchTerm && datos.length === 0 && !loading && !errorMessage && (
+                  <div className="flex justify-center mt-8">
+                    <p className="text-gray-600">No hay ejercicios disponibles.</p>
+                  </div>
+                )}
            {searchTerm && datos.length === 0 && loading && (
              <div className="text-center mb-4">
                <Spinner size="md" />
