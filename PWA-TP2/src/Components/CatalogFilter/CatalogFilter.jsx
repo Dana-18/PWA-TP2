@@ -6,8 +6,7 @@ const ExerciseGallery = ({datos, searchTerm = ""}) => {
 
     const {i18n} = useTranslation();
     const [categoriaActiva, setCategoriaActiva] = useState('All');
-    const [datosCompletos, setDatosCompletos] = useState([]);
-    const [cargandoFiltro, setCargandoFiltro] = useState(false);
+    const [datosCompletos, setDatosCompletos] = useState([]); // reservado pero no cargamos todo aquí
 
     // Categorías base en inglés (identificadores consistentes)
     const categoriasBase = ['All', 'Chest', 'Back', 'Shoulders', 'Legs', 'Biceps', 'Triceps'];
@@ -32,47 +31,20 @@ const ExerciseGallery = ({datos, searchTerm = ""}) => {
         return getCategoriaNombre(categoria);
     };
 
-    // Cargar todos los datos desde la API
-    const obtenerTodosDatos = async (idioma) => {
-        setCargandoFiltro(true);
-        try {
-            const response = await fetch(`https://tp-express.vercel.app/api/exercises?lang=${idioma}&limit=1000`);
-            const datosRecibidos = await response.json();
-            
-            // Validación por si la API devuelve un objeto intermedio
-            let datosFinales = Array.isArray(datosRecibidos) ? datosRecibidos : datosRecibidos.exercises || [];
-            
-            setDatosCompletos(datosFinales);
-            console.log("Datos completos recibidos:", datosFinales);
-            console.log("Grupos musculares únicos:", [...new Set(datosFinales.map(d => d.muscleGroup))]);
-        } catch (error) {
-            console.log("Error al cargar todos los datos:", error);
-            setDatosCompletos([]);
-        }
-        setCargandoFiltro(false);
-    };
-    
-    // Cargar datos cuando cambia el idioma
-    useEffect(() => {
-        setCategoriaActiva('All');
-        obtenerTodosDatos(i18n.language);
-    }, [i18n.language]);
-    
-    // Cargar datos cuando se selecciona una categoría distinta a "All"
-    useEffect(() => {
-        if (categoriaActiva !== 'All') {
-            obtenerTodosDatos(i18n.language);
-        }
-    }, [categoriaActiva, i18n.language]);
+    // Nota: para respetar la carga incremental del padre, NO solicitamos todos los datos aquí.
+    // Usaremos `datos` provistos por el componente padre (`Catalog`).
 
-    // Usar datosCompletos si tenemos datos, sino usar datos del padre (para "All")
-    const datosAMostrar = datosCompletos.length > 0 ? datosCompletos : datos;
+    // Usar los datos provistos por el padre para respetar la paginación incremental
+    const datosAMostrar = datos;
     const valorFiltroActivo = getValorFiltro(categoriaActiva);
     
     // Filtrar por categoría y searchTerm
-    let datosFiltrados = categoriaActiva === 'All' 
-        ? datosAMostrar 
-        : datosCompletos.filter(item => item.muscleGroup === valorFiltroActivo);
+    let datosFiltrados = categoriaActiva === 'All'
+        ? datosAMostrar
+        : datosAMostrar.filter(item => {
+            // comparo por identificador base o por nombre traducido
+            return item.muscleGroup === categoriaActiva || item.muscleGroup === getCategoriaNombre(categoriaActiva);
+        });
     
     // Aplicar filtro de búsqueda
     if (searchTerm.trim()) {
@@ -96,17 +68,14 @@ const ExerciseGallery = ({datos, searchTerm = ""}) => {
                                 categoriaActiva === cat
                                     ? 'bg-teal-700 text-white cursor-pointer'
                                     : 'bg-stone-100 text-black hover:bg-stone-200 cursor-pointer'
-                            }`}
-                            disabled={cargandoFiltro && cat !== 'All'}
-                        >
+                            }`}>
                             {label}
                         </button>
                     );
                 })}
             </div>
 
-            {cargandoFiltro && categoriaActiva !== 'All'
-            }
+            
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {datosFiltrados.map((item) => (
