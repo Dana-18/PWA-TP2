@@ -92,7 +92,7 @@ export default function Catalog() {
   }, [page, loading, hasMore]); // Dependencias clave para seguir el estado real del scroll
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 md:grid md:grid-cols-[280px_minmax(0,1fr)]">
+    <div className="no-scrollbar min-h-screen bg-slate-100 text-slate-900 md:grid md:grid-cols-[280px_minmax(0,1fr)]">
       <Sidebar />
       <div className="flex flex-col min-h-screen">
         <Header />
