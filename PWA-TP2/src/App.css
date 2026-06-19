@@ -3,3 +3,14 @@ body{
   padding: 0;
   box-sizing: border-box;
 }
+@layer utilities {
+  /* Para Chrome, Safari y Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Para IE, Edge y Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
