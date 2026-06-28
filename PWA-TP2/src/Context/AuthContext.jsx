@@ -83,9 +83,35 @@ export const AuthProvider = ({ children }) => {
             }
 
             const authUser = {
-                email: result?.email || email,
-                token: result?.token || result?.accessToken || null,
+                email: result?.email || result?.user?.email || email,
+                name: result?.name || result?.user?.name || name || null,
+                token: result?.token || result?.accessToken || result?.user?.token || result?.user?.accessToken || null,
             };
+
+            if (action === "register" && !authUser.token) {
+                const loginResponse = await fetch(`${AUTH_API_URL}/login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const loginResult = await loginResponse.json().catch(() => null);
+                if (!loginResponse.ok) {
+                    throw new Error(loginResult?.message || "No se pudo completar el inicio de sesión después del registro");
+                }
+
+                const loggedUser = {
+                    email: loginResult?.user?.email || loginResult?.email || email,
+                    name: loginResult?.user?.name || loginResult?.name || name || null,
+                    token: loginResult?.token || loginResult?.accessToken || loginResult?.user?.token || loginResult?.user?.accessToken || null,
+                };
+
+                setUser(loggedUser);
+                closeAuthModal();
+                return { success: true, user: loggedUser };
+            }
 
             setUser(authUser);
             closeAuthModal();
