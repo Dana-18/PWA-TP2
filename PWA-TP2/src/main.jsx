@@ -3,15 +3,14 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { Routes } from '../src/const/routes.js'
 import './index.css'
-import App from './App.jsx'
 import Home from './Pages/Home.jsx'
 import Catalog from './Pages/Catalog/Catalog.jsx'
 import CreateRoutine from './Pages/CreateRoutine/CreateRoutine.jsx'
 import SelectExercises from './Pages/SelectExercises/SelectExercises.jsx'
 import Details from './Pages/Details/Details.jsx';
 import FavoritesPage from './Pages/Favorites/Favorites.jsx';
+import { AuthProvider } from './Context/AuthContext';
 import "./i18n.js";
-
 
 const router = createBrowserRouter([
   {
@@ -27,6 +26,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )

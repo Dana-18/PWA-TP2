@@ -4,11 +4,15 @@ import { useTranslation } from "react-i18next";
 
 const DetailsCard = ({ exercise }) => {
     const [showVideo, setShowVideo] = useState(true);
-    const { t } = useTranslation();
+    const { t,i18n } = useTranslation();
+
+    const idioma = i18n.language;
 
     if (!exercise) {
         return <div className="p-8 text-center">No exercise data available</div>;
     }
+  
+    //const { id, image, difficulty, video, targetIntensity, translations: { [idioma]: { name, description, muscleGroup, equipment, breathing, technique } } } = exercise;
 
     const {name, description, image, muscleGroup, difficulty, video, targetIntensity, equipment, breathing, technique} = exercise;
 
