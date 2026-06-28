@@ -59,17 +59,22 @@ export const AuthProvider = ({ children }) => {
         closeAuthModal();
     };
 
-    const authRequest = async (email, password, action) => {
+    const authRequest = async (email, password, action, name = null) => {
         setLoadingAuth(true);
         setError(null);
 
         try {
+            const body = { email, password };
+            if (action === "register") {
+                body.name = name;
+            }
+
             const response = await fetch(`${AUTH_API_URL}/${action}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify(body),
             });
 
             const result = await response.json().catch(() => null);
@@ -95,7 +100,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const login = async (email, password) => authRequest(email, password, "login");
-    const register = async (email, password) => authRequest(email, password, "register");
+    const register = async (name, email, password) => authRequest(email, password, "register", name);
 
     return (
         <AuthContext.Provider

@@ -14,6 +14,7 @@ export default function AuthModal() {
         setAuthMode,
     } = useContext(AuthContext);
 
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -24,7 +25,7 @@ export default function AuthModal() {
         if (authMode === "login") {
             await login(email, password);
         } else {
-            await register(email, password);
+            await register(name, email, password);
         }
     };
 
@@ -52,6 +53,19 @@ export default function AuthModal() {
                 </div>
 
                 <form onSubmit={submitHandler} className="space-y-4">
+                    {authMode === "register" ? (
+                        <label className="block text-sm font-medium text-slate-700">
+                            Nombre
+                            <input
+                                value={name}
+                                onChange={(event) => setName(event.target.value)}
+                                type="text"
+                                placeholder="Tu nombre"
+                                className="mt-2 w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-3 text-base text-slate-900 outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+                                required
+                            />
+                        </label>
+                    ) : null}
                     <label className="block text-sm font-medium text-slate-700">
                         Email
                         <input
@@ -85,7 +99,7 @@ export default function AuthModal() {
                         <SimpleButton
                             text={loadingAuth ? "Procesando..." : authMode === "login" ? "Iniciar sesión" : "Registrarse"}
                             size="md"
-                            onClick={submitHandler}
+                            type="submit"
                         />
                         <div className="text-sm text-slate-600">
                             {authMode === "login" ? (

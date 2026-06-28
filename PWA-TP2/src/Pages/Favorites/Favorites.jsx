@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 import Header from "../../Components/Header/Header";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Footer from "../../Components/Footer/Footer";
 import CardItem from "../../Components/CardItem/CardItem";
 import Spinner from "../../Components/Spinner/Spinner";
-import { useFavorites } from "../../Hooks/UseFavorites"; 
+import { useFavorites } from "../../Hooks/UseFavorites";
+import { AuthContext } from "../../Context/AuthContext";
 import { useTranslation } from "react-i18next";
 
 const FavoritesPage = () => {
@@ -13,19 +14,32 @@ const FavoritesPage = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const { favorites, toggleFavorite } = useFavorites();
+    const { user } = useContext(AuthContext);
     const { t, i18n } = useTranslation();
     const [refreshKey, setRefreshKey] = useState(0);
 
     useEffect(() => {
         const loadFavorites = async () => {
+            if (!user?.token) {
+                setfavoritesAllProducts([]);
+                return;
+            }
+
             setLoading(true);
             try {
-                const response = await fetch('https://tp-express.vercel.app/api/favorites');
+                const response = await fetch('https://tp-express.vercel.app/api/favorites', {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                });
                 const data = await response.json();
-                if (!Array.isArray(data)) return;
+                if (!Array.isArray(data)) {
+                    setfavoritesAllProducts([]);
+                    return;
+                }
 
                 const normalized = data
-                    .filter((fav) => fav.userId === 'miUsuario')
                     .map((fav) => {
                         const exercise = fav.exercise || {};
                         const translation = exercise.translations?.[i18n.language] || exercise.translations?.en || {};
@@ -56,7 +70,7 @@ const FavoritesPage = () => {
         };
 
         loadFavorites();
-    }, [i18n.language, refreshKey]);
+    }, [i18n.language, refreshKey, user?.token]);
 
     const favoriteProducts = useMemo(() => allProducts, [allProducts]);
 

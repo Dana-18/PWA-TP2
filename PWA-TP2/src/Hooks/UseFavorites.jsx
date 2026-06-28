@@ -1,21 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
 
 const API_FAVORITES_URL = "https://tp-express.vercel.app/api/favorites";
-const CURRENT_USER_ID = "miUsuario";
 
 export const useFavorites = () => {
+    const { user } = useContext(AuthContext);
     const [favorites, setfavorites] = useState([]);
 
     useEffect(() => {
         const loadFavorites = async () => {
+            if (!user?.token) {
+                setfavorites([]);
+                return;
+            }
+
             try {
-                const response = await fetch(API_FAVORITES_URL);
+                const response = await fetch(API_FAVORITES_URL, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                });
                 const data = await response.json();
                 if (!Array.isArray(data)) return;
 
-                const favoriteIds = data
-                    .filter((item) => item.userId === CURRENT_USER_ID)
-                    .map((item) => String(item.exerciseId));
+                const favoriteIds = data.map((item) => String(item.exerciseId));
 
                 setfavorites(favoriteIds);
             } catch (error) {
@@ -24,22 +33,26 @@ export const useFavorites = () => {
         };
 
         loadFavorites();
-    }, []);
+    }, [user?.token]);
 
     const toggleFavorite = async (exercise) => {
         const exerciseId = String(exercise.id);
         const isFavorite = favorites.includes(exerciseId);
 
         try {
+            if (!user?.token) {
+                return { success: false, message: "Usuario no autenticado" };
+            }
+
             if (isFavorite) {
                 const deleteUrl = new URL(API_FAVORITES_URL);
                 deleteUrl.searchParams.append('exerciseId', exerciseId);
-                deleteUrl.searchParams.append('userId', CURRENT_USER_ID);
 
                 const response = await fetch(deleteUrl.toString(), {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
+                        Authorization: `Bearer ${user.token}`,
                     },
                 });
 
@@ -54,9 +67,9 @@ export const useFavorites = () => {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
+                        Authorization: `Bearer ${user.token}`,
                     },
                     body: JSON.stringify({
-                        userId: CURRENT_USER_ID,
                         exerciseId: exerciseId,
                         exercise: exercise,
                     }),
