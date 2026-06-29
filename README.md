@@ -46,7 +46,7 @@
 <h3>Estructura del proyecto: </h3>
 <p>El proyecto esta estructurado de la siguiente forma:</p>
 
-<img width="176" height="376" alt="imagen_2026-05-05_213821652" src="https://github.com/user-attachments/assets/c04e9d60-427e-4389-80c2-a5f205a420c5" />
+<img width="279" height="732" alt="image" src="https://github.com/user-attachments/assets/4f67d672-54cf-4476-999e-1596d0110fd1" />
 
 <ul>
   <li>
@@ -67,9 +67,9 @@
 </ul>
 
 <h3>Visualización del proyecto: </h3>
-<img width="1563" height="729" alt="image" src="https://github.com/user-attachments/assets/af6fdfa7-7576-41f1-bcec-022e6ec2bffb" />
-<img width="1566" height="730" alt="image" src="https://github.com/user-attachments/assets/73687b12-27c1-41e5-8a26-e90e4173c5cf" />
-<img width="1566" height="735" alt="image" src="https://github.com/user-attachments/assets/bc51d065-2104-4f92-b905-5639c40b5ace" />
-<img width="1565" height="731" alt="image" src="https://github.com/user-attachments/assets/38cf8947-9c0f-4f07-be8d-80f69577c81e" />
-<img width="1562" height="732" alt="image" src="https://github.com/user-attachments/assets/98dd64bf-5a1c-4db0-829b-efb93a719e8d" />
-<img width="1562" height="733" alt="image" src="https://github.com/user-attachments/assets/435a933a-ca96-4f0a-bd41-6e54745ced71" />
+<img width="1563" height="729" alt="image" src="https://github.com/user-attachments/assets/8679d40d-0fbb-4a93-b3c2-ea573edef8f5" />
+<img width="1566" height="730" alt="image" src="https://github.com/user-attachments/assets/a6c3058b-0c96-47e4-a31b-53e4ecb7bd8e" />
+<img width="1566" height="730" alt="image" src="https://github.com/user-attachments/assets/04f9d0a9-0323-4052-9a54-cf5e5270f422" />
+<img width="1565" height="731" alt="image" src="https://github.com/user-attachments/assets/940f4ffe-6641-45f6-9eb2-295aa6888f3d" />
+<img width="1562" height="732" alt="image" src="https://github.com/user-attachments/assets/b1926712-8fac-4ae0-a6c7-e4812a3d986c" />
+<img width="1562" height="733" alt="image" src="https://github.com/user-attachments/assets/5e325b5d-12e8-45be-8e1e-4e8e46ab31a2" />
